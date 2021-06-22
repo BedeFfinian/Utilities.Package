@@ -1,0 +1,75 @@
+#' A Model Diagnostic Function Plot
+#'
+#' This function Plots Model Diagnostics
+#' @param Model used to diagnose model assumptions
+#' @keywords Model Diagnostics
+#' @export
+#' @examples
+#' Model_Check()
+
+Model_Check <- function(Model){
+
+  tmp<-data.frame(Fitted=fitted(Model),
+                  Residuals=resid(Model))
+
+  theme_Bede <- function(...){
+
+    ggplot2::theme_classic()+
+      ggplot2::theme(panel.grid = ggplot2::element_line(color = "#b4aea9"),
+                     panel.grid.minor = ggplot2::element_blank(),
+                     panel.grid.major.x = ggplot2::element_blank(),
+                     plot.title.position = "plot",
+                     panel.grid.major.y = ggplot2::element_line(linetype="dashed"),
+                     axis.ticks = ggplot2::element_blank(),
+                     axis.line = ggplot2::element_line(colour = "grey50"),
+                     plot.background = ggplot2::element_rect(fill = '#fbf9f4', color = '#fbf9f4'),
+                     axis.title.y = ggplot2::element_text(face="bold", angle=90),
+                     axis.title.x = ggplot2::element_text(face="bold"),
+                     rect = ggplot2::element_blank(),
+            legend.text.align = 0.5,
+            legend.title.align = 0,
+            axis.title = ggplot2::element_text(size=11.5,vjust=0.5),
+            axis.text.x = ggplot2::element_text(size = 10.5,
+                                       colour = "black"),
+            axis.text.y = ggplot2::element_text(colour = "black",
+                                       size = 10.5))
+  }
+
+
+  G1<-ggplot2::ggplot(tmp)+
+    ggplot2::geom_point(ggplot2::aes(x=Fitted,y=Residuals))+
+    theme_Bede()
+
+  G2<-ggplot2::ggplot(tmp) +
+    ggplot2::stat_qq(ggplot2::aes(sample=Residuals))+
+    ggplot2::stat_qq_line(ggplot2::aes(sample=Residuals))+
+    ggplot2::labs(y="Sample Quartiles",x="Theoretical Quartiles")+
+    theme_Bede()
+
+  G3<-ggplot2::ggplot(tmp,ggplot2::aes(x=Residuals))+
+    ggplot2::geom_histogram()+
+    ggplot2::labs(y="Count",x="Residuals")+
+    theme_Bede()
+
+  bacf <- acf(tmp$Residuals, plot = FALSE)
+  bacfdf <- with(bacf, data.frame(lag, acf))
+
+  res_<-acf(tmp$Residuals, plot= F)
+
+  lim1<- qnorm((1 + (1 - 0.05))/2)/sqrt(res_$n.used)
+  lim0<- -lim1
+
+   G4<- ggplot2::ggplot(data = bacfdf,
+                        mapping = ggplot2::aes(x = lag, y = acf)) +
+    ggplot2::geom_hline(ggplot2::aes(yintercept = 0)) +
+    ggplot2::geom_segment(mapping = ggplot2::aes(xend = lag, yend = 0))+
+    ggplot2::geom_hline(ggplot2::aes(yintercept = lim1), linetype = 2, color = 'blue') +
+    ggplot2::geom_hline(ggplot2::aes(yintercept = lim0), linetype = 2, color = 'blue')+
+     ggplot2::labs(y="Auto Correlation Factor",x="Lag")+
+     theme_Bede()
+
+   cowplot::plot_grid(G1,G2,G3,G4)
+
+
+}
+
