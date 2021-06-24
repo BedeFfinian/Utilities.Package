@@ -10,13 +10,17 @@
 #' Bede_pal()
 
 Bede_colours <- c(
-  `red`        = "#d11141",
-  `green`      = "#00b159",
-  `blue`       = "#00aedb",
-  `orange`     = "#f37735",
-  `yellow`     = "#ffc425",
+  `red`        = "#bd1c1c",
+  `green`      = "#38ab07",
+  `blue`       = "#0058db",
+  `orange`     = "#e3950e",
+  `yellow`     = "#fce517",
   `light grey` = "#cccccc",
-  `dark grey`  = "#8c8c8c")
+  `dark grey`  = "#545454",
+  `dark cyan`  = "#008b8b",
+  `dark purple`= "#3e0269",
+  `light blue` = "#b5f6ff",
+  `dark blue`  = "#0e1296")
 
 Bede_cols <- function(...) {
   cols <- c(...)
@@ -28,7 +32,7 @@ Bede_cols <- function(...) {
 }
 
 Bede_palettes <- list(
-  `main`  = Bede_cols("blue", "green", "yellow"),
+  `main`  = Bede_cols("dark cyan","blue", "green", "yellow"),
 
   `cool`  = Bede_cols("blue", "green"),
 
@@ -36,7 +40,9 @@ Bede_palettes <- list(
 
   `mixed` = Bede_cols("blue", "green", "yellow", "orange", "red"),
 
-  `grey`  = Bede_cols("light grey", "dark grey")
+  `grey`  = Bede_cols("light grey", "dark grey"),
+
+  `bathy` = Bede_cols("light blue","dark cyan", "dark blue", "dark purple")
 )
 
 Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
@@ -45,6 +51,5 @@ Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
   if (reverse) pal <- rev(pal)
 
   grDevices::colorRampPalette(pal, ...)
-
 
   }
