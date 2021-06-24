@@ -38,7 +38,7 @@ Bede_palettes <- list(
 
   `hot`   = Bede_cols("yellow", "orange", "red"),
 
-  `mixed` = Bede_cols("blue", "green", "yellow", "orange", "red"),
+  `mixed` = Bede_cols("dark cyan", "green", "yellow", "orange", "red"),
 
   `grey`  = Bede_cols("light grey", "dark grey"),
 
