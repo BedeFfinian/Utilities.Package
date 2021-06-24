@@ -32,7 +32,7 @@ Bede_cols <- function(...) {
 }
 
 Bede_palettes <- list(
-  `main`  = Bede_cols("dark cyan","blue", "green", "yellow"),
+  `main`  = Bede_cols("dark blue","dark cyan", "yellow"),
 
   `cool`  = Bede_cols("blue", "green"),
 
