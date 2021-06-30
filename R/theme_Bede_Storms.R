@@ -5,10 +5,10 @@
 #' @keywords Theme
 #' @export
 #' @examples
-#' theme_Bede()
+#' theme_Bede_Storms()
 
 
-theme_Bede <- function(...){
+theme_Bede_Storms <- function(...){
 
   +
     ggplot2::theme_classic()+
@@ -16,13 +16,13 @@ theme_Bede <- function(...){
                    panel.grid.minor = ggplot2::element_blank(),
                    panel.grid.major.x = ggplot2::element_blank(),
                    plot.title.position = "plot",
-                   panel.grid.major.y = ggplot2::element_line(linetype="dashed"),
+                   panel.grid.major.y = ggplot2::element_blank(),
                    axis.line = ggplot2::element_line(colour = "grey50"),
                    plot.background = ggplot2::element_rect(fill = '#fbf9f4', color = '#fbf9f4'),
                    axis.title.y = ggplot2::element_text(face="bold", angle=90),
                    axis.title.x = ggplot2::element_text(face="bold"),
                    rect = ggplot2::element_blank(),
-                   axis.ticks = ggplot::element_blank(),
+                   panel.border = element_rect(colour = "black", fill=NA, size=1),
                    legend.text.align = 0.5,
                    legend.title.align = 0,
                    axis.title = ggplot2::element_text(size=11.5,vjust=0.5),
