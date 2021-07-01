@@ -10,7 +10,7 @@
 
 theme_Bede_Storms <- function(...){
 
-  +
+
     ggplot2::theme_classic()+
     ggplot2::theme(panel.grid = ggplot2::element_line(color = "#b4aea9"),
                    panel.grid.minor = ggplot2::element_blank(),
