@@ -18,7 +18,6 @@ theme_Bede_Storms <- function(...){
                    plot.title.position = "plot",
                    panel.grid.major.y = ggplot2::element_blank(),
                    axis.line = ggplot2::element_line(colour = "grey50"),
-                   plot.background = ggplot2::element_rect(fill = '#fbf9f4', color = '#fbf9f4'),
                    axis.title.y = ggplot2::element_text(face="bold", angle=90),
                    axis.title.x = ggplot2::element_text(face="bold"),
                    rect = ggplot2::element_blank(),
