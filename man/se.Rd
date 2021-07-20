@@ -6,6 +6,9 @@
 \usage{
 se(x)
 }
+\arguments{
+\item{Standard_Error}{function to create standard error}
+}
 \description{
 This function calculates Standard Error
 }

@@ -10,7 +10,6 @@
 
 theme_Bede <- function(...){
 
-
     ggplot2::theme_classic()+
     ggplot2::theme(panel.grid = ggplot2::element_line(color = "#b4aea9"),
                    panel.grid.minor = ggplot2::element_blank(),
@@ -22,7 +21,7 @@ theme_Bede <- function(...){
                    axis.title.y = ggplot2::element_text(face="bold", angle=90),
                    axis.title.x = ggplot2::element_text(face="bold"),
                    rect = ggplot2::element_blank(),
-                   axis.ticks = ggplot::element_blank(),
+                   axis.ticks = ggplot2::element_blank(),
                    legend.text.align = 0.5,
                    legend.title.align = 0,
                    axis.title = ggplot2::element_text(size=11.5,vjust=0.5),
