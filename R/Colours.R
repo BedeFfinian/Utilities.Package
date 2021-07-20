@@ -42,7 +42,9 @@ Bede_palettes <- list(
 
   `grey`  = Bede_cols("light grey", "dark grey"),
 
-  `bathy` = Bede_cols("light blue","dark cyan", "dark blue", "dark purple")
+  `bathy` = Bede_cols("light blue","dark cyan", "dark blue", "dark purple"),
+
+  `PhD` = Bede_cols("dark cyan", "light grey", "orange")
 )
 
 Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
