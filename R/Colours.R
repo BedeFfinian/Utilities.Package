@@ -20,7 +20,8 @@ Bede_colours <- c(
   `dark cyan`  = "#008b8b",
   `dark purple`= "#3e0269",
   `light blue` = "#b5f6ff",
-  `dark blue`  = "#0e1296")
+  `dark blue`  = "#0e1296",
+  `dark gold`  = "#e86a28")
 
 Bede_cols <- function(...) {
   cols <- c(...)
@@ -44,7 +45,7 @@ Bede_palettes <- list(
 
   `bathy` = Bede_cols("light blue","dark cyan", "dark blue", "dark purple"),
 
-  `PhD` = Bede_cols("dark cyan", "dark grey")
+  `PhD` = Bede_cols("dark cyan", "light grey", "dark gold")
 )
 
 Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
