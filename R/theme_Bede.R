@@ -10,8 +10,8 @@
 
 theme_Bede <- function(...){
 
-    ggplot2::theme_classic()+
-    ggplot2::theme(panel.grid = ggplot2::element_blank(),
+  ggplot2::theme_classic()+
+    ggplot2::theme(panel.grid = ggplot2::element_line(color = "#b4aea9"),
                    panel.grid.minor = ggplot2::element_blank(),
                    panel.grid.major.x = ggplot2::element_blank(),
                    plot.title.position = "plot",
@@ -20,6 +20,7 @@ theme_Bede <- function(...){
                    axis.title.y = ggplot2::element_text(face="bold", angle=90),
                    axis.title.x = ggplot2::element_text(face="bold"),
                    rect = ggplot2::element_blank(),
+                   panel.border = element_rect(colour = "black", fill=NA, size=1),
                    legend.text.align = 0.5,
                    legend.title.align = 0,
                    axis.title = ggplot2::element_text(size=11.5,vjust=0.5),
