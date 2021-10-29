@@ -43,7 +43,7 @@ Bede_palettes <- list(
 
   `grey`  = Bede_cols("light grey", "dark grey"),
 
-  `Mussels`= Bede_cols(),
+  `Mussels`= Bede_cols("dark cyan","dark blue"),
 
   `bathy` = Bede_cols("light blue","dark cyan", "dark blue", "dark purple"),
 
