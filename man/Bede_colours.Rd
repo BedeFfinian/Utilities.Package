@@ -5,7 +5,7 @@
 \alias{Bede_colours}
 \title{Colour Functions}
 \format{
-An object of class \code{character} of length 12.
+An object of class \code{character} of length 13.
 }
 \usage{
 Bede_colours

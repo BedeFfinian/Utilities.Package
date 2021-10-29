@@ -21,7 +21,8 @@ Bede_colours <- c(
   `dark purple`= "#3e0269",
   `light blue` = "#b5f6ff",
   `dark blue`  = "#0e1296",
-  `dark gold`  = "#e86a28")
+  `dark gold`  = "#e86a28",
+  `dark sea blue` = "#0f3d64")
 
 Bede_cols <- function(...) {
   cols <- c(...)
@@ -43,7 +44,7 @@ Bede_palettes <- list(
 
   `grey`  = Bede_cols("light grey", "dark grey"),
 
-  `Mussels`= Bede_cols("dark cyan","dark blue"),
+  `Mussels`= Bede_cols("dark cyan","dark sea blue"),
 
   `bathy` = Bede_cols("light blue","dark cyan", "dark blue", "dark purple"),
 
