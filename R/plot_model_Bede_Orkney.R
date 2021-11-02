@@ -47,6 +47,6 @@ plot_model_Bede_Orkney<-function(df_mean,df_pred,Metric,Formula){
     scale_fill_Bede("Orkney")+
     theme_Bede()+
     guides(linetype=ggplot2::guide_legend(override.aes=list(fill=NA)))+
-    ggtitle(paste0(Metric,": ",deparse(Formula)))
+    ggtitle(paste0(stringr::str_to_title(Metric),": ",deparse(Formula)))
 
 }
