@@ -26,7 +26,7 @@ Bede_colours <- c(
   `Mussels Rope` = "#002673",
   `Mussels Control` = "#a90000",
   `Orkney RN` = "#56bda2",
-  `Orkeny RS` = "#dbb13b",
+  `Orkney RS` = "#dbb13b",
   `Orkney WC` = "#2494a2"
   )
 
