@@ -5,6 +5,7 @@
 #' @keywords Colours Palettes
 #' @export
 #' @examples
+#' Bede_colours()
 #' Bede_cols()
 #' Bede_Palettes()
 #' Bede_pal()

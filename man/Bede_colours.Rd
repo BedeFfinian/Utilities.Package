@@ -17,6 +17,7 @@ Bede_colours
 These function add colours to add to ggplot scales
 }
 \examples{
+Bede_colours()
 Bede_cols()
 Bede_Palettes()
 Bede_pal()
