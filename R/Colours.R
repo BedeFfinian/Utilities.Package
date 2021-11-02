@@ -24,7 +24,10 @@ Bede_colours <- c(
   `dark gold`  = "#e86a28",
   `dark sea blue` = "#0f3d64",
   `Mussels Rope` = "#002673",
-  `Mussels Control` = "#a90000"
+  `Mussels Control` = "#a90000",
+  `Orkney RN` = "#56bda2",
+  `Orkeny RS` = "#dbb13b",
+  `Orkney WC` = "#2494a2"
   )
 
 Bede_cols <- function(...) {
@@ -51,7 +54,11 @@ Bede_palettes <- list(
 
   `bathy` = Bede_cols("light blue","dark cyan", "dark blue", "dark purple"),
 
-  `PhD` = Bede_cols("dark cyan", "light grey", "dark gold")
+  `PhD` = Bede_cols("dark cyan", "light grey", "dark gold"),
+
+  `Orkney` = Bede_cols("Orkney RN", "Orkney RS", "Orkney WC")
+
+
 )
 
 Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
