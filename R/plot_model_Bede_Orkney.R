@@ -42,7 +42,7 @@ plot_model_Bede_Orkney<-function(df_mean,df_pred,Metric,Formula){
                                             y=fit_resp,
                                             colour=Area,
                                             linetype=Area))+
-    ggplot2::labs(y=paste0(Metric),x="Year")+
+    ggplot2::labs(y=paste0(stringr::str_to_title(Metric)),x="Year")+
     scale_colour_Bede("Orkney")+
     scale_fill_Bede("Orkney")+
     theme_Bede()+
