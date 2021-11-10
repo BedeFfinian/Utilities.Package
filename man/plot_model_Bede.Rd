@@ -4,16 +4,25 @@
 \alias{plot_model_Bede}
 \title{Model Plot Function}
 \usage{
-plot_model_Bede(df_mean, df_pred, Metric, Formula, x)
+plot_model_Bede(
+  df_mean,
+  df_pred,
+  Metric,
+  Formula,
+  xvar,
+  colourvar,
+  pallette,
+  xlabel
+)
 }
 \arguments{
 \item{plot}{used to create ggplot scales}
 }
 \description{
-This Function creates a ggplot of Model Predictions using YearNum and Area
+This Function creates a ggplot of Model Predictions using a X variable (xvar) and treatment (colourvar)
 }
 \examples{
-plot_model_Bede_Orkney()
+plot_model_Bede()
 }
 \keyword{Model}
 \keyword{Predictions}
