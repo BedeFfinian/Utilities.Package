@@ -12,9 +12,6 @@
 plot_model_Bede<-function(df_mean,df_pred,Metric,Formula,xvar,colourvar,pallette,xlabel){
 
 
-  xvar <- enquo(xvar)
-  colourvar <- enquo(colourvar)
-
   ggplot2::ggplot()+
     ggplot2::geom_errorbar(data=df_mean,
                            mapping=ggplot2::aes(x=.data[[xvar]],
