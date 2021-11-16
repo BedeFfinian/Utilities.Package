@@ -8,6 +8,7 @@ plot_model_Bede(
   df_mean,
   df_pred,
   Metric,
+  Name,
   Formula,
   xvar,
   colourvar,
