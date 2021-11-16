@@ -13,7 +13,8 @@ plot_model_Bede(
   xvar,
   colourvar,
   pallette,
-  xlabel
+  xlabel,
+  Categorical.x
 )
 }
 \arguments{
