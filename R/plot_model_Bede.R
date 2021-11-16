@@ -47,6 +47,10 @@ plot_model_Bede<-function(df_mean,df_pred,Metric,Formula,xvar,colourvar,pallette
     scale_fill_Bede(pallette)+
     theme_Bede()+
     guides(linetype=ggplot2::guide_legend(override.aes=list(fill=NA)))+
-    ggtitle(paste0(stringr::str_to_title(Metric),": ",deparse(Formula)))
+    ggtitle(paste0(stringr::str_to_title(Metric),": ",deparse(Formula)))+
+    scale_y_continuous(name=paste0(stringr::str_to_title(Metric)),
+                       limits = c((min(df_mean$Mean)-max(df_mean$CI)),
+                                  (max(df_mean$Mean)+max(df_mean$CI))),
+                       oob = scales::squish)
 
 }
