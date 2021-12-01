@@ -11,7 +11,9 @@
 
 plot_model_Bede<-function(df_mean,df_pred,Metric,Name,Formula,xvar,colourvar,pallette,xlabel,Categorical.x){
 
-  if(Categorical.x==FALSE){
+  if(!isTRUE(Categorical.x))
+
+    return({
 
   ggplot2::ggplot()+
     ggplot2::geom_errorbar(data=df_mean,
@@ -52,9 +54,10 @@ plot_model_Bede<-function(df_mean,df_pred,Metric,Name,Formula,xvar,colourvar,pal
     scale_y_continuous(name=paste0(stringr::str_to_title(Name)),
                        limits = c((min(df_mean$Mean)-max(df_mean$CI)),
                                   (max(df_mean$Mean)+max(df_mean$CI))),
-                       oob = scales::squish)}
+                       oob = scales::squish)})
 
-  if(Categorical.x==TRUE){
+  else
+    return({
 
     ggplot2::ggplot()+
       ggplot2::geom_errorbar(data=df_pred,
@@ -81,7 +84,7 @@ plot_model_Bede<-function(df_mean,df_pred,Metric,Name,Formula,xvar,colourvar,pal
       scale_y_continuous(name=paste0(stringr::str_to_title(Name)),
                          limits = c((min(df_pred$lwr_resp)),
                                     (max(df_pred$upr_resp))),
-                         oob = scales::squish)}
+                         oob = scales::squish)})
 
 
 }
