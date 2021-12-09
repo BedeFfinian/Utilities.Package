@@ -13,9 +13,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Utilities.Package <img src="man/figures/logo.png" width="200px" height="200px" align="right" style="padding-left:10px;background-color:white;" />
+# Utilities.Package <img src="man/figures/logo.png" width="300px" height="200px" align="right" style="padding-left:10px;background-color:white;" />
 
-Primarily, Utilities.Package is a package of simple utility features for data manipulation and simple statistics. It also contains personalisable palettes and themes for ggplot2 plots. Plus, any random crap that Molly adds.
+Primarily, Utilities.Package is a package of simple utility features for data manipulation and simple statistics. It also contains personalisable palettes and themes for ggplot2 plots. 
 
 ## Installation 
 
@@ -24,7 +24,7 @@ You can install the development version of Utilities.Package from [Github](https
 ``` r
 install.packages("devtools")
 
-devtools::install_github("MBERC/Utilities.Package")
+devtools::install_github("bedeffinian/Utilities.Package")
 ```
 
 
@@ -142,7 +142,7 @@ colourplot1<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="main",
-       title="Main Palette from Bede")+
+       title="Main Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("main")
 
@@ -153,7 +153,7 @@ colourplot2<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="mixed",
-       title="Mixed Palette from Bede")+
+       title="Mixed Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("mixed")
 
@@ -164,7 +164,7 @@ colourplot3<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="cool",
-       title="Cool Palette from Bede")+
+       title="Cool Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("cool")
 
@@ -175,7 +175,7 @@ colourplot4<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="hot",
-       title="Hot Palette from Bede")+
+       title="Hot Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("hot")
 
@@ -186,7 +186,7 @@ colourplot5<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="PhD Bede",
-       title="PhD Palette from Bede")+
+       title="PhD Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("PhD")
 
@@ -197,7 +197,7 @@ colourplot6<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="Orkney Bede",
-       title="Orkney Palette from Bede")+
+       title="Orkney Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("Orkney")
 
@@ -209,7 +209,6 @@ colourplot1+colourplot2+
 
 
 ```
-
 
 There also a few colours palettes for gradients by putting discrete=FALSE.
 
