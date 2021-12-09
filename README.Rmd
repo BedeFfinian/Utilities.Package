@@ -196,10 +196,10 @@ colourplot6<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_smooth(aes(color=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="Bathy_Blues Bede",
-       title="Bathy_Blues Palette from Bede")+
+       color="Orkney Bede",
+       title="Orkney Palette from Bede")+
   Utilities.Package::theme_Bede()+
-  Utilities.Package::scale_colour_Bede("Bathy_Blues")
+  Utilities.Package::scale_colour_Bede("Orkney")
 
 
 colourplot1+colourplot2+
