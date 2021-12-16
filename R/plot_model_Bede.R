@@ -47,15 +47,15 @@ plot_model_Bede<-function(df_mean,df_pred,Metric,
                                             y=fit_resp,
                                             colour=.data[[colourvar]],
                                             linetype=.data[[colourvar]]))+
-    ggplot2::labs(y=paste0(stringr::str_to_title(Metric)),x=xlabel)+
+    ggplot2::labs(y=paste0(Metric),x=xlabel)+
     scale_colour_Bede(pallette)+
     scale_fill_Bede(pallette)+
     theme_Bede()+
     guides(linetype=ggplot2::guide_legend(override.aes=list(fill=NA)))+
-    ggtitle(paste0(stringr::str_to_title(Metric),": ",deparse(Formula)))+
-    scale_y_continuous(Metric=paste0(stringr::str_to_title(Metric)),
-                       limits = c(df_pred$lwr_resp,(min(df_mean$Mean)-max(df_mean$CI)),
-                                  df_pred$upr_resp,(max(df_mean$Mean)+max(df_mean$CI))),
+    ggtitle(paste0(Metric,": ",deparse(Formula)))+
+    scale_y_continuous(name=paste0(Metric),
+                       limits = c(min(df_pred$lwr_resp,(min(df_mean$Mean)-max(df_mean$CI))),
+                                  max(df_pred$upr_resp,(max(df_mean$Mean)+max(df_mean$CI)))),
                        oob = scales::squish)})
 
   else
@@ -77,15 +77,15 @@ plot_model_Bede<-function(df_mean,df_pred,Metric,
                                                fill=.data[[colourvar]]),
                           colour="black",
                           position = ggplot2::position_dodge(0.1), size=2)+
-      ggplot2::labs(y=paste0(stringr::str_to_title(Metric)),x=xlabel)+
+      ggplot2::labs(y=paste0(Metric),x=xlabel)+
       scale_colour_Bede(pallette)+
       scale_fill_Bede(pallette)+
       theme_Bede()+
       guides(linetype=ggplot2::guide_legend(override.aes=list(fill=NA)))+
-      ggtitle(paste0(stringr::str_to_title(Metric),": ",deparse(Formula)))+
-      scale_y_continuous(Metric=paste0(stringr::str_to_title(Metric)),
-                         limits = c(df_pred$lwr_resp,(min(df_mean$Mean)-max(df_mean$CI)),
-                                    df_pred$upr_resp,(max(df_mean$Mean)+max(df_mean$CI))),
+      ggtitle(paste0(Metric,": ",deparse(Formula)))+
+      scale_y_continuous(name=paste0(Metric),
+                         limits = c(min(df_pred$lwr_resp,(min(df_mean$Mean)-max(df_mean$CI))),
+                                    max(df_pred$upr_resp,(max(df_mean$Mean)+max(df_mean$CI)))),
                          oob = scales::squish)})
 
 

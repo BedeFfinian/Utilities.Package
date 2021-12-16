@@ -10,8 +10,9 @@ model_Bede(
   Time_Element,
   Treatment_Element,
   Random_Element,
-  Metric_column,
-  Mixed
+  Metric_Column,
+  Mixed,
+  Family_Column
 )
 }
 \arguments{

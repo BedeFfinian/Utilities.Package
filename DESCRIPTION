@@ -20,6 +20,7 @@ Import:
 	tidyr,
 	mgcv,
 	MuMIn,
-	magrittr
+	magrittr,
+	tibble
 Remotes:  
     bbolker/glmmadmb
