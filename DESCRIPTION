@@ -8,12 +8,18 @@ Authors@R:
            email = "bedeffinian@gmail.com",
            comment = c(ORCID = "0000-0001-6462-4347"))
 Description: A suite of functions utilised by myself for easy of analysis of data and creating clearer code.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a license
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Import:
 	ggplot2,
-	cowplot
+	cowplot,
+	dplyr,
+	tidyr,
+	mgcv,
+	MuMIn,
+	magrittr
+Remotes:  
+    bbolker/glmmadmb

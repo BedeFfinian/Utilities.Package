@@ -9,7 +9,9 @@
 
 
 
-plot_model_Bede<-function(df_mean,df_pred,Metric,Name,Formula,xvar,colourvar,pallette,xlabel,Categorical.x){
+plot_model_Bede<-function(df_mean,df_pred,Metric,
+                          Formula,xvar,colourvar,
+                          pallette,xlabel,Categorical.x){
 
   if(!isTRUE(Categorical.x))
 
@@ -51,7 +53,7 @@ plot_model_Bede<-function(df_mean,df_pred,Metric,Name,Formula,xvar,colourvar,pal
     theme_Bede()+
     guides(linetype=ggplot2::guide_legend(override.aes=list(fill=NA)))+
     ggtitle(paste0(stringr::str_to_title(Metric),": ",deparse(Formula)))+
-    scale_y_continuous(name=paste0(stringr::str_to_title(Name)),
+    scale_y_continuous(Metric=paste0(stringr::str_to_title(Metric)),
                        limits = c(df_pred$lwr_resp,(min(df_mean$Mean)-max(df_mean$CI)),
                                   df_pred$upr_resp,(max(df_mean$Mean)+max(df_mean$CI))),
                        oob = scales::squish)})
@@ -81,7 +83,7 @@ plot_model_Bede<-function(df_mean,df_pred,Metric,Name,Formula,xvar,colourvar,pal
       theme_Bede()+
       guides(linetype=ggplot2::guide_legend(override.aes=list(fill=NA)))+
       ggtitle(paste0(stringr::str_to_title(Metric),": ",deparse(Formula)))+
-      scale_y_continuous(name=paste0(stringr::str_to_title(Name)),
+      scale_y_continuous(Metric=paste0(stringr::str_to_title(Metric)),
                          limits = c(df_pred$lwr_resp,(min(df_mean$Mean)-max(df_mean$CI)),
                                     df_pred$upr_resp,(max(df_mean$Mean)+max(df_mean$CI))),
                          oob = scales::squish)})
