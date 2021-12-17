@@ -15,6 +15,9 @@ plot_model_Bede<-function(df_mean,df_pred,Metric,
                           Formula,xvar,colourvar,
                           pallette,xlabel,Categorical.x){
 
+df_mean<-as.data.frame(df_mean)
+df_pred<-as.data.frame(df_pred)
+
   if(!isTRUE(Categorical.x))
 
     return({
@@ -58,7 +61,9 @@ plot_model_Bede<-function(df_mean,df_pred,Metric,
         scale_y_continuous(name=paste0(Metric),
                            limits = c(min(df_pred$lwr_resp,(min(df_mean$Mean)-max(df_mean$CI))),
                                       max(df_pred$upr_resp,(max(df_mean$Mean)+max(df_mean$CI)))),
-                           oob = scales::squish)})
+                           oob = scales::squish)
+
+      })
 
   else
     return({
