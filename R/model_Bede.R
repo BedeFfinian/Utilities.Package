@@ -249,12 +249,12 @@ model_Bede <- function(Input_df,Response,Time_Element,Treatment_Element,
 
 
 
-        if(!as.character(unique(tmp_df$Family_Column))%in%c("beta","gamma")){
-          Mod1_tmp<-glm(Response~Time_Element*Treatment_Element,data=tmp_df,family=as.character(unique(tmp_df$Family_Column)))
-          Mod2_tmp<-glm(Response~Time_Element+Treatment_Element,data=tmp_df,family=as.character(unique(tmp_df$Family_Column)))
-          Mod3_tmp<-glm(Response~Treatment_Element,data=tmp_df,family=as.character(unique(tmp_df$Family_Column)))
-          Mod4_tmp<-glm(Response~Time_Element,data=tmp_df,family=as.character(unique(tmp_df$Family_Column)))
-          Mod5_tmp<-glm(Response~1,data=tmp_df,family=as.character(unique(tmp_df$Family_Column)))
+        if(as.character(unique(tmp_df$Family_Column))%in%c("poisson")){
+          Mod1_tmp<-glm(Response~Time_Element*Treatment_Element,data=tmp_df,family="poisson")
+          Mod2_tmp<-glm(Response~Time_Element+Treatment_Element,data=tmp_df,family="poisson")
+          Mod3_tmp<-glm(Response~Treatment_Element,data=tmp_df,family="poisson")
+          Mod4_tmp<-glm(Response~Time_Element,data=tmp_df,family="poisson")
+          Mod5_tmp<-glm(Response~1,data=tmp_df,family="poisson")
         }
 
         if(as.character(unique(tmp_df$Family_Column))=="beta"){
