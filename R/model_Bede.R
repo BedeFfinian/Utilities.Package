@@ -215,9 +215,9 @@ model_Bede <- function(Input_df,Response,Time_Element,Treatment_Element,
 
 
   if(!isTRUE(Mixed))
-
+    print("It got to here")
     return({
-
+      print("Did it get here? 2")
       BestModels<-list()
 
       Metrics<-unique(Input_df$Metric_Column)
@@ -235,14 +235,16 @@ model_Bede <- function(Input_df,Response,Time_Element,Treatment_Element,
       BestOutput<-NULL
 
 
+      print("Did it get here? 3")
       NewData<-data.frame(Time_Element=Input_df$Time_Element,
                           Treatment_Element=Input_df$Treatment_Element) %>%
         dplyr::distinct()
 
 
       for (i in seq_along(Metrics)){
+        print("Did it get here? 4")
 
-        print(paste("Assessing Metric::", Metrics[[i]]))
+        print(paste0("Assessing Metric::", Metrics[[i]]))
 
         tmp_df<-Input_df %>%
           dplyr::filter(Metric_Column==Metrics[[i]]& !Response%in%NA)
