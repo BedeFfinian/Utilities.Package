@@ -7,12 +7,14 @@
 se(x)
 }
 \arguments{
-\item{Standard_Error}{function to create standard error}
+\item{x}{vector of values to calculate Standard error from}
 }
 \description{
 This function calculates Standard Error
 }
 \examples{
-se()
+vec<-rnorm(200,0)
+vec_se<-se(vec)
+vec_se
 }
 \keyword{se}

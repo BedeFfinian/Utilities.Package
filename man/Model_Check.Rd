@@ -7,13 +7,14 @@
 Model_Check(Model)
 }
 \arguments{
-\item{Model}{used to diagnose model assumptions}
+\item{Model}{a model output object.}
 }
 \description{
-This function Plots Model Diagnostics
+This function Plots Model Diagnostics fitted values vs residuals, qqnorm plot, histogram of residuals and Auto Correlation Factor.
 }
 \examples{
-Model_Check()
+model <- lm(mpg ~ wt + cyl, data = mtcars)
+Model_Check(model)
 }
 \keyword{Diagnostics}
 \keyword{Model}

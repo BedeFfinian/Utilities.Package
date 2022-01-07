@@ -4,25 +4,33 @@
 \alias{model_Bede}
 \title{Model Function}
 \usage{
-model_Bede(
-  Input_df,
-  Response,
-  Time_Element,
-  Treatment_Element,
-  Random_Element,
-  Metric_Column,
-  Mixed,
-  Family_Column
-)
+model_Bede(Input_df, Response, Var1, Var2, RandomVar1, Metric, Mixed, Family)
 }
 \arguments{
-\item{Model}{glm or glmm}
+\item{Input_df}{a dataframe in tidy format.}
+
+\item{Response}{column from Input_df that includes the response variable}
+
+\item{Var1}{column from Input_df that includes a fixed effect.}
+
+\item{Var2}{column from Input_df that includes a fixed effect.}
+
+\item{RandomVar1}{column from Input_df that includes a random effect. (must be a factor)}
+
+\item{Metric}{column from Input_df that specifies each response variable metric.}
+
+\item{Mixed}{logical. if TRUE RandomVar1 is required to carry out glmm. if FALSE RandomVar1 not needed and glm carried out.}
+
+\item{Family}{column from Input_df that specifies the family/distribution to used for each metric. options: "gaussian", "poisson", "gamma" or "beta"}
 }
 \description{
 This Function applies a glm/glmm models applying model selection using AICc to input into plot_model_Bede()
 It can handle beta, gamma and poisson models with ease, gaussian is currently in development
 }
 \examples{
-model_Bede()
+df<-mtcars \%>\% tibble::rowid_to_column("ID") \%>\% dplyr::select(ID, carb, cyl, gear,everything()) \%>\% tidyr::pivot_longer(-(ID:gear),names_to="Metric",values_to="Response")
+df1<-df \%>\% dplyr::filter(!Metric\%in\%c("vs","am")) \%>\% mutate(ID=paste0("ID_",ID),Family=dplyr::if_else(Metric=="hp","poisson","gamma"))
+df2<-df1 \%>\% mutate(carb=as.factor(carb),cyl=as.factor(cyl),gear=as.factor(gear))
+Modelled<-model_Bede(Input_df=df2,Response="Response",Var1="carb",Var2="gear",RandomVar1="cyl",Metric="Metric",Mixed=TRUE,Family="Family")
 }
 \keyword{Model}

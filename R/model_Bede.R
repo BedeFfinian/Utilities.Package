@@ -70,7 +70,7 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
         print(paste("Assessing Metric:: ", Metrics[[i]]))
 
         tmp_df<-Input_df %>%
-          dplyr::filter(Metric==Metrics[[i]]& !,data[[Response]]%in%NA & !.data[[Var1]]%in%NA & !.data[[Var2]]%in%NA & !.data[[RandomVar1]]%in%NA)
+          dplyr::filter(Metric==Metrics[[i]]& !Response%in%NA & !Var1%in%NA & !Var2%in%NA & !RandomVar1%in%NA)
         print("Test3")
         if(!as.character(unique(tmp_df$Family))=="gaussian"){
           tryCatch({

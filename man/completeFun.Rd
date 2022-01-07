@@ -7,13 +7,17 @@
 completeFun(data, desiredCols)
 }
 \arguments{
-\item{Remove}{NA rows}
+\item{data}{data that you want to remove rows containing NAs in.}
+
+\item{desiredCols}{column(s) to check for NAs to remove rows where NAs are,}
 }
 \description{
 This function remove NA rows
 }
 \examples{
-completeFun()
+df<-data.frame(A=c(1,2,3,NA),B=c("a",NA,"c","d"),C=c("Z","Y",NA,"W"))
+df_1<-completeFun(df,desiredCols=c("B","C"))
+df_1
 }
 \keyword{NAs}
 \keyword{Remove}

@@ -6,13 +6,11 @@
 \usage{
 theme_Bede(...)
 }
-\arguments{
-\item{Theme}{used to display ggplots}
-}
 \description{
-This function adds a theme to ggplots
+This function adds a custom theme to ggplots
 }
 \examples{
-theme_Bede()
+df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10))
+ggplot(df,aes(x=x,y=y))+geom_point()+theme_Bede()
 }
 \keyword{Theme}

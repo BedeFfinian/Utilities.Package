@@ -7,13 +7,18 @@
 scale_fill_Bede(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 }
 \arguments{
-\item{fills}{used to create ggplot scales}
+\item{palette}{Select one of the preset colour palettes within the package. "main" is default. other options include "cool", "hot","mixed", "grey", "mussels" "bathy", "PhD", "Orkney", "Bathy_Blues" and "SAS"}
+
+\item{discrete}{Select whether colour scale is discrete or not. Automatic unless selected. TRUE is default.}
+
+\item{reverse}{Select which direction a scale should be applied.}
 }
 \description{
 These function add colours to add to ggplot fill scales
 }
 \examples{
-scale_fill_Bede()
+df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10),Treatment=rep(c("A","B"),50))
+ggplot(df,aes(x=x,y=y,fill=Treatment))+geom_point()+scale_fill_Bede("SAS")
 }
-\keyword{Fills}
+\keyword{Colours}
 \keyword{Palettes}
