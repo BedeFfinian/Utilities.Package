@@ -1,11 +1,12 @@
 #' A Model Diagnostic Function Plot
 #'
-#' This function Plots Model Diagnostics
-#' @param Model used to diagnose model assumptions
+#' This function Plots Model Diagnostics fitted values vs residuals, qqnorm plot, histogram of residuals and Auto Correlation Factor.
+#' @param Model a model output object.
 #' @keywords Model Diagnostics
 #' @export
 #' @examples
-#' Model_Check()
+#' model <- lm(mpg ~ wt + cyl, data = mtcars)
+#' Model_Check(model)
 
 Model_Check <- function(Model){
 

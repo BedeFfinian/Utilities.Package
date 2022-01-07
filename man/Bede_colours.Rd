@@ -10,11 +10,8 @@ An object of class \code{character} of length 31.
 \usage{
 Bede_colours
 }
-\arguments{
-\item{Colours}{used to create ggplot scales}
-}
 \description{
-These function add colours to add to ggplot scales
+These functions are helper functions to create palettes and colours for scale_colour_Bede and scale_fill_Bede
 }
 \examples{
 Bede_colours()

@@ -1,7 +1,6 @@
 #' Colour Functions
 #'
-#' These function add colours to add to ggplot scales
-#' @param Colours used to create ggplot scales
+#' These functions are helper functions to create palettes and colours for scale_colour_Bede and scale_fill_Bede
 #' @keywords Colours Palettes
 #' @export
 #' @examples

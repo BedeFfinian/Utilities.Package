@@ -1,11 +1,11 @@
 #' A ggplot Theme Function
 #'
-#' This function adds a theme to ggplots
-#' @param Theme used to display ggplots
+#' This function adds a custom theme to ggplots
 #' @keywords Theme
 #' @export
 #' @examples
-#' theme_Bede()
+#' df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10))
+#' ggplot(df,aes(x=x,y=y))+geom_point()+theme_Bede()
 
 
 theme_Bede <- function(...){
