@@ -107,12 +107,12 @@ In Utilities.Package we have many functions to make figures look nicer (*we thin
 ```{r base plot,fig.width=15}
 
 ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species),
+  geom_point(aes(colour = species),
              size = 1)+
-  geom_smooth(aes(color=species),method = "lm")+
+  geom_smooth(aes(colour=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="Species")
+       colour="Species")
   
 ```
 
@@ -121,124 +121,122 @@ Now lets make the theme look better.
 ```{r theme use,fig.width=15}
 
 ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species),
+  geom_point(aes(colour = species),
              size = 1)+
-  geom_smooth(aes(color=species),method = "lm")+
+  geom_smooth(aes(colour=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="Species")+
+       colour="Species")+
   Utilities.Package::theme_Bede()
 
 ```
 
 Okay that is better but lets make the colours nicer. 
 
-```{r colour use,message=FALSE,fig.width=12}
+```{r colour use,message=FALSE,fig.width=12,fig.height=10}
 
 colourplot1<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species),
+  geom_point(aes(colour = species),
              size = 1)+
-  geom_smooth(aes(color=species),method = "lm")+
+  geom_smooth(aes(colour=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="main",
+       colour="main",
        title="Main Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("main")
 
 colourplot2<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species),
+  geom_point(aes(colour = species),
              size = 1)+
-  geom_smooth(aes(color=species),method = "lm")+
+  geom_smooth(aes(colour=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="mixed",
+       colour="mixed",
        title="Mixed Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("mixed")
 
 colourplot3<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species),
+  geom_point(aes(colour = species),
              size = 1)+
-  geom_smooth(aes(color=species),method = "lm")+
+  geom_smooth(aes(colour=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="cool",
+       colour="cool",
        title="Cool Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("cool")
 
 colourplot4<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species),
+  geom_point(aes(colour = species),
              size = 1)+
-  geom_smooth(aes(color=species),method = "lm")+
+  geom_smooth(aes(colour=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="hot",
+       colour="hot",
        title="Hot Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("hot")
 
 colourplot5<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species),
+  geom_point(aes(colour = species),
              size = 1)+
-  geom_smooth(aes(color=species),method = "lm")+
+  geom_smooth(aes(colour=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="PhD Bede",
+       colour="PhD",
        title="PhD Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("PhD")
 
 colourplot6<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species),
+  geom_point(aes(colour = species),
              size = 1)+
-  geom_smooth(aes(color=species),method = "lm")+
+  geom_smooth(aes(colour=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="Orkney Bede",
+       colour="Orkney",
        title="Orkney Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("Orkney")
 
 colourplot7<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species),
+  geom_point(aes(colour = species),
              size = 1)+
-  geom_smooth(aes(color=species),method = "lm")+
+  geom_smooth(aes(colour=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="SAS Bede",
+       colour="SAS",
        title="SAS Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("SAS")
 
 colourplot8<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species),
+  geom_point(aes(colour = species),
              size = 1)+
-  geom_smooth(aes(color=species),method = "lm")+
+  geom_smooth(aes(colour=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="AnnePort Bede",
+       colour="AnnePort",
        title="AnnePort Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("AnnePort")
 
 colourplot9<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species),
+  geom_point(aes(colour = species),
              size = 1)+
-  geom_smooth(aes(color=species),method = "lm")+
+  geom_smooth(aes(colour=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
-       color="BathyBlues Bede",
-       title="BathyBlues Palette")+
+       colour="Bathy_Blues",
+       title="Bathy_Blues Palette")+
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("Bathy_Blues")
 
-colourplot1+colourplot2+
-  colourplot3+colourplot4+
-  colourplot5+colourplot6+
-  colourplot7+colourplot8 +
-  colourplot9 &
+  (colourplot1+colourplot2+colourplot3)/
+  (colourplot4+colourplot5+colourplot6)/
+  (colourplot7+colourplot8+colourplot9) &
   theme(legend.position = c(0.15,0.7))
 
 
