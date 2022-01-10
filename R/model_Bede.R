@@ -13,18 +13,43 @@
 #' @keywords Model
 #' @export
 #' @examples
-#' df<-mtcars %>% tibble::rowid_to_column("ID") %>% dplyr::select(ID, carb, cyl, gear,everything()) %>% tidyr::pivot_longer(-(ID:gear),names_to="Metric",values_to="Response")
-#' df1<-df %>% dplyr::filter(!Metric%in%c("vs","am")) %>% mutate(ID=paste0("ID_",ID),Family=dplyr::if_else(Metric=="hp","poisson","gamma"))
-#' df2<-df1 %>% mutate(carb=as.factor(carb),cyl=as.factor(cyl),gear=as.factor(gear))
-#' Modelled<-model_Bede(Input_df=df2,Response="Response",Var1="carb",Var2="gear",RandomVar1="cyl",Metric="Metric",Mixed=TRUE,Family="Family")
+#'
+#' df1<-data.frame(Response=rnorm(3000, mean=10, sd=2),
+#'                 Var1=rep(c("A","B","C"),1000),
+#'                 Var2=c(rep("X",1000),rep("Y",1000),rep("Z",1000)),
+#'                 RandomVar1=rep(c("ID_1","ID_2","ID_3","ID_4"),750),
+#'                 Metric=rep("Water_Temp",3000),
+#'                 Family=rep("gaussian",3000))
+#'
+#' df2<-data.frame(Response=rbeta(3000,0.5,1),
+#'                 Var1=rep(c("A","B","C"),1000),
+#'                 Var2=c(rep("X",1000),rep("Y",1000),rep("Z",1000)),
+#'                 RandomVar1=rep(c("ID_1","ID_2","ID_3","ID_4"),750),
+#'                 Metric=rep("Infection_Prop",3000),
+#'                 Family=rep("beta",3000))
+#'
+#' df3<-data.frame(Response=rgamma(3000, 30),
+#'                 Var1=rep(c("A","B","C"),1000),
+#'                 Var2=c(rep("X",1000),rep("Y",1000),rep("Z",1000)),
+#'                 RandomVar1=rep(c("ID_1","ID_2","ID_3","ID_4"),750),
+#'                 Metric=rep("Tree_Height",3000),
+#'                 Family=rep("gamma",3000))
+#'
+#' Input_df<-rbind(df1,df2,df3) %>% dplyr::mutate(Var1=as.factor(Var1),Var2=as.factor(Var2),RandomVar1=as.factor(RandomVar1))
+#'
+#' Modelled<-model_Bede(Input_df=Input_df,Response="Response",
+#'                      Var1="Var1",Var2="Var2",RandomVar1="RandomVar1",
+#'                      Metric="Metric",Mixed=TRUE,Family="Family")
+
 #' @import mgcv
 #' @import tidyr
 #' @import dplyr
 #' @import MuMIn
+#' @import lme4
 #' @import broom
 #' @import broom.mixed
 #' @importFrom magrittr "%>%"
-
+#' @importFrom merTools "predictInterval"
 
 
 model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Family){
@@ -65,10 +90,11 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
 
 
       if(length(Metrics)>1) { for (i in seq_along(Metrics)){
-        print(paste("Assessing Metric:: ", Metrics[[i]]))
+        print(paste("Assessing Metric: ", Metrics[[i]]))
 
         tmp_df<-Input_df %>%
           dplyr::filter(Metric==Metrics[[i]]& !Response%in%NA & !Var1%in%NA & !Var2%in%NA & !RandomVar1%in%NA)
+
         if(!as.character(unique(tmp_df$Family))=="gaussian"){
             CombinedMod1_tmp<-glmmADMB::glmmadmb(Response~Var1*Var2+(1|RandomVar1),data=tmp_df,
                                                family=as.character(unique(tmp_df$Family)))
@@ -88,9 +114,6 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
 
           CombinedMod5_tmp<-glmmADMB::glmmadmb(Response~1+(1|RandomVar1),data=tmp_df,
                                                family=as.character(unique(tmp_df$Family)))
-
-
-
         }
 
         if(as.character(unique(tmp_df$Family))=="gaussian"){
@@ -103,10 +126,6 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
 
         }
 
-
-        print("Test9")
-
-
         AIC_Values<-MuMIn::AICc(CombinedMod1_tmp,
                                 CombinedMod2_tmp,
                                 CombinedMod3_tmp,
@@ -115,33 +134,27 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
           dplyr::mutate(deltaAIC=AICc-min(AICc,na.rm = TRUE),
                         GoodBad=dplyr::case_when(deltaAIC<=2~"Good",
                                                  deltaAIC>2~"Bad"))
-        print("Test10")
 
         Good_dfs<-AIC_Values %>%
           dplyr::filter(GoodBad=="Good")
-        print("Test11")
 
         Good_dfs_min<-min(Good_dfs$df)
-        print("Test12")
 
         BestAICc<-AIC_Values %>%
           dplyr::filter(GoodBad=="Good" & df==Good_dfs_min[[1]])
 
-
-        print("Test13")
-
-
+        if(!as.character(unique(tmp_df$Family))=="gaussian"){
         Output<-tibble::tibble(AIC=MuMIn::AICc(CombinedMod1_tmp,
                                                CombinedMod2_tmp,
                                                CombinedMod3_tmp,
                                                CombinedMod4_tmp,
                                                CombinedMod5_tmp ),
-                               Formula=c(CombinedMod1_tmp$formula,
+                               Formula=list(CombinedMod1_tmp$formula,
                                          CombinedMod2_tmp$formula,
                                          CombinedMod3_tmp$formula,
                                          CombinedMod4_tmp$formula,
                                          CombinedMod5_tmp$formula),
-                               Link=c(family(CombinedMod1_tmp)$linkinv,
+                               Link=list(family(CombinedMod1_tmp)$linkinv,
                                       family(CombinedMod2_tmp)$linkinv,
                                       family(CombinedMod3_tmp)$linkinv,
                                       family(CombinedMod4_tmp)$linkinv,
@@ -201,8 +214,7 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
                                           dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
                                                            Se=se(Response),
                                                            CI=(sd(Response)*1.96)/2) )) %>%
-          dplyr::mutate(Metric=Metrics[[i]]) %>%
-          dplyr::filter(!AIC$AICc%in%NA)
+          dplyr::mutate(Metric=Metrics[[i]])
 
         BestOutput<-Output %>%
           dplyr::filter(AIC$df==Good_dfs_min[[1]] & AIC$AICc==BestAICc$AICc)
@@ -224,6 +236,93 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
                                              "fit_resp","se_resp",
                                              "upr_resp","lwr_resp")
 
+        }
+
+        if(as.character(unique(tmp_df$Family))=="gaussian"){
+
+           Output<-tibble::tibble(AIC=MuMIn::AICc(CombinedMod1_tmp,
+                                                 CombinedMod2_tmp,
+                                                 CombinedMod3_tmp,
+                                                 CombinedMod4_tmp,
+                                                 CombinedMod5_tmp ),
+                                 Formula=list(paste0(deparse(CombinedMod1_tmp@call$formula)),
+                                           paste0(deparse(CombinedMod2_tmp@call$formula)),
+                                           paste0(deparse(CombinedMod3_tmp@call$formula)),
+                                           paste0(deparse(CombinedMod4_tmp@call$formula)),
+                                           paste0(deparse(CombinedMod5_tmp@call$formula))),
+                                 Link=list(family(CombinedMod1_tmp)$linkinv,
+                                        family(CombinedMod2_tmp)$linkinv,
+                                        family(CombinedMod3_tmp)$linkinv,
+                                        family(CombinedMod4_tmp)$linkinv,
+                                        family(CombinedMod5_tmp)$linkinv),
+                                 Model=list(broom.mixed::tidy(CombinedMod1_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod2_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod3_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod4_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod5_tmp,effects="fixed")),
+                                 Model_obj=list(CombinedMod1_tmp,
+                                                CombinedMod2_tmp,
+                                                CombinedMod3_tmp,
+                                                CombinedMod4_tmp,
+                                                CombinedMod5_tmp),
+                                 Prediction=list(dplyr::bind_cols(NewData,
+                                                                  tibble::as_tibble(merTools::predictInterval(CombinedMod1_tmp,
+                                                                                                     NewData, n.sims = 1000))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  tibble::as_tibble(merTools::predictInterval(CombinedMod2_tmp,
+                                                                                                    NewData, n.sims = 1000))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  tibble::as_tibble(merTools::predictInterval(CombinedMod3_tmp,
+                                                                                                    NewData, n.sims = 1000))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  tibble::as_tibble(merTools::predictInterval(CombinedMod4_tmp,
+                                                                                                    NewData, n.sims = 1000))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  tibble::as_tibble(merTools::predictInterval(CombinedMod5_tmp,
+                                                                                                    NewData, n.sims = 1000)))),
+                                 Raw=list(tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) )) %>%
+            dplyr::mutate(Metric=Metrics[[i]])
+
+          BestOutput<-Output %>%
+            dplyr::filter(AIC$df==Good_dfs_min[[1]] & AIC$AICc==BestAICc$AICc)
+
+
+          BestOutput$Prediction[[1]][,7]<-((BestOutput$Prediction[[1]][,5]-BestOutput$Prediction[[1]][,6])/3.92)
+
+          names(BestOutput$Prediction[[1]])<-c("Var1",
+                                               "Var2",
+                                               "RandomVar1",
+                                               "fit_resp",
+                                               "upr_resp",
+                                               "lwr_resp",
+                                               "se_resp")
+
+        }
+
         BestModels[[i]]<-BestOutput
 
         tmp_df<-NULL
@@ -244,7 +343,7 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
 
 
       if(length(Metrics)==1) {{
-        print(paste("Assessing Metric:: ", Metrics[[1]]))
+        print(paste("Assessing Metric: ", Metrics[[1]]))
 
         tmp_df<-Input_df %>%
           dplyr::filter(!Response%in%NA & !Var1%in%NA & !Var2%in%NA & !RandomVar1%in%NA)
@@ -291,99 +390,186 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
 
 
 
+        if(!as.character(unique(tmp_df$Family))=="gaussian"){
+          Output<-tibble::tibble(AIC=MuMIn::AICc(CombinedMod1_tmp,
+                                                 CombinedMod2_tmp,
+                                                 CombinedMod3_tmp,
+                                                 CombinedMod4_tmp,
+                                                 CombinedMod5_tmp ),
+                                 Formula=list(CombinedMod1_tmp$formula,
+                                           CombinedMod2_tmp$formula,
+                                           CombinedMod3_tmp$formula,
+                                           CombinedMod4_tmp$formula,
+                                           CombinedMod5_tmp$formula),
+                                 Link=list(family(CombinedMod1_tmp)$linkinv,
+                                        family(CombinedMod2_tmp)$linkinv,
+                                        family(CombinedMod3_tmp)$linkinv,
+                                        family(CombinedMod4_tmp)$linkinv,
+                                        family(CombinedMod5_tmp)$linkinv),
+                                 Model=list(broom.mixed::tidy(CombinedMod1_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod2_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod3_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod4_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod5_tmp,effects="fixed")),
+                                 Model_obj=list(CombinedMod1_tmp,
+                                                CombinedMod2_tmp,
+                                                CombinedMod3_tmp,
+                                                CombinedMod4_tmp,
+                                                CombinedMod5_tmp),
+                                 Prediction=list(dplyr::bind_cols(NewData,
+                                                                  setNames(tibble::as_tibble(predict(CombinedMod1_tmp,
+                                                                                                     NewData, se.fit = TRUE)[1:2]),
+                                                                           c('fit_link','se_link'))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  setNames(tibble::as_tibble(predict(CombinedMod2_tmp,
+                                                                                                     NewData, se.fit = TRUE)[1:2]),
+                                                                           c('fit_link','se_link'))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  setNames(tibble::as_tibble(predict(CombinedMod3_tmp,
+                                                                                                     NewData, se.fit = TRUE)[1:2]),
+                                                                           c('fit_link','se_link'))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  setNames(tibble::as_tibble(predict(CombinedMod4_tmp,
+                                                                                                     NewData, se.fit = TRUE)[1:2]),
+                                                                           c('fit_link','se_link'))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  setNames(tibble::as_tibble(predict(CombinedMod5_tmp,
+                                                                                                     NewData, se.fit = TRUE)[1:2]),
+                                                                           c('fit_link','se_link')))),
+                                 Raw=list(tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) )) %>%
+            dplyr::mutate(Metric=Metrics[[i]])
 
-        Output<-tibble::tibble(AIC=MuMIn::AICc(CombinedMod1_tmp,
-                                               CombinedMod2_tmp,
-                                               CombinedMod3_tmp,
-                                               CombinedMod4_tmp,
-                                               CombinedMod5_tmp ),
-                               Formula=c(CombinedMod1_tmp$formula,
-                                         CombinedMod2_tmp$formula,
-                                         CombinedMod3_tmp$formula,
-                                         CombinedMod4_tmp$formula,
-                                         CombinedMod5_tmp$formula),
-                               Link=c(family(CombinedMod1_tmp)$linkinv,
-                                      family(CombinedMod2_tmp)$linkinv,
-                                      family(CombinedMod3_tmp)$linkinv,
-                                      family(CombinedMod4_tmp)$linkinv,
-                                      family(CombinedMod5_tmp)$linkinv),
-                               Model=list(broom.mixed::tidy(CombinedMod1_tmp,effects="fixed"),
-                                          broom.mixed::tidy(CombinedMod2_tmp,effects="fixed"),
-                                          broom.mixed::tidy(CombinedMod3_tmp,effects="fixed"),
-                                          broom.mixed::tidy(CombinedMod4_tmp,effects="fixed"),
-                                          broom.mixed::tidy(CombinedMod5_tmp,effects="fixed")),
-                               Model_obj=list(CombinedMod1_tmp,
-                                              CombinedMod2_tmp,
-                                              CombinedMod3_tmp,
-                                              CombinedMod4_tmp,
-                                              CombinedMod5_tmp),
-                               Prediction=list(dplyr::bind_cols(NewData,
-                                                                setNames(tibble::as_tibble(predict(CombinedMod1_tmp,
-                                                                                                   NewData, se.fit = TRUE)[1:2]),
-                                                                         c('fit_link','se_link'))),
-                                               dplyr::bind_cols(NewData,
-                                                                setNames(tibble::as_tibble(predict(CombinedMod2_tmp,
-                                                                                                   NewData, se.fit = TRUE)[1:2]),
-                                                                         c('fit_link','se_link'))),
-                                               dplyr::bind_cols(NewData,
-                                                                setNames(tibble::as_tibble(predict(CombinedMod3_tmp,
-                                                                                                   NewData, se.fit = TRUE)[1:2]),
-                                                                         c('fit_link','se_link'))),
-                                               dplyr::bind_cols(NewData,
-                                                                setNames(tibble::as_tibble(predict(CombinedMod4_tmp,
-                                                                                                   NewData, se.fit = TRUE)[1:2]),
-                                                                         c('fit_link','se_link'))),
-                                               dplyr::bind_cols(NewData,
-                                                                setNames(tibble::as_tibble(predict(CombinedMod5_tmp,
-                                                                                                   NewData, se.fit = TRUE)[1:2]),
-                                                                         c('fit_link','se_link')))),
-                               Raw=list(tmp_df %>%
-                                          dplyr::group_by(Var1,Var2) %>%
-                                          dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
-                                                           Se=se(Response),
-                                                           CI=(sd(Response)*1.96)/2) ,
-                                        tmp_df %>%
-                                          dplyr::group_by(Var1,Var2) %>%
-                                          dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
-                                                           Se=se(Response),
-                                                           CI=(sd(Response)*1.96)/2) ,
-                                        tmp_df %>%
-                                          dplyr::group_by(Var1,Var2) %>%
-                                          dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
-                                                           Se=se(Response),
-                                                           CI=(sd(Response)*1.96)/2) ,
-                                        tmp_df %>%
-                                          dplyr::group_by(Var1,Var2) %>%
-                                          dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
-                                                           Se=se(Response),
-                                                           CI=(sd(Response)*1.96)/2) ,
-                                        tmp_df %>%
-                                          dplyr::group_by(Var1,Var2) %>%
-                                          dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
-                                                           Se=se(Response),
-                                                           CI=(sd(Response)*1.96)/2) )) %>%
-          dplyr::mutate(Metric=Metrics[[1]])
-
-
-        BestOutput<-Output %>%
-          dplyr::filter(AIC$df==Good_dfs_min[[1]] & AIC$AICc==BestAICc$AICc)
-
-
-        ilink <- BestOutput$Link[[1]]
+          BestOutput<-Output %>%
+            dplyr::filter(AIC$df==Good_dfs_min[[1]] & AIC$AICc==BestAICc$AICc)
 
 
-        BestOutput$Prediction[[1]][,6]<-ilink(BestOutput$Prediction[[1]][,4])
+          ilink <- BestOutput$Link[[1]]
 
-        BestOutput$Prediction[[1]][,7]<-ilink(BestOutput$Prediction[[1]][,5])
 
-        BestOutput$Prediction[[1]][,8]<-ilink(BestOutput$Prediction[[1]][,4]+(2*BestOutput$Prediction[[1]][,5]))
+          BestOutput$Prediction[[1]][,6]<-ilink(BestOutput$Prediction[[1]][,4])
 
-        BestOutput$Prediction[[1]][,9]<-ilink(BestOutput$Prediction[[1]][,4]-(2*BestOutput$Prediction[[1]][,5]))
+          BestOutput$Prediction[[1]][,7]<-ilink(BestOutput$Prediction[[1]][,5])
 
-        names(BestOutput$Prediction[[1]])<-c("Var1","Var2","RandomVar1",
-                                             "fit_link","se_link",
-                                             "fit_resp","se_resp",
-                                             "upr_resp","lwr_resp")
+          BestOutput$Prediction[[1]][,8]<-ilink(BestOutput$Prediction[[1]][,4]+(2*BestOutput$Prediction[[1]][,5]))
+
+          BestOutput$Prediction[[1]][,9]<-ilink(BestOutput$Prediction[[1]][,4]-(2*BestOutput$Prediction[[1]][,5]))
+
+          names(BestOutput$Prediction[[1]])<-c("Var1","Var2","RandomVar1",
+                                               "fit_link","se_link",
+                                               "fit_resp","se_resp",
+                                               "upr_resp","lwr_resp")
+
+        }
+
+        if(as.character(unique(tmp_df$Family))=="gaussian"){
+
+          Output<-tibble::tibble(AIC=MuMIn::AICc(CombinedMod1_tmp,
+                                                 CombinedMod2_tmp,
+                                                 CombinedMod3_tmp,
+                                                 CombinedMod4_tmp,
+                                                 CombinedMod5_tmp ),
+                                 Formula=list(paste0(deparse(CombinedMod1_tmp@call$formula)),
+                                           paste0(deparse(CombinedMod2_tmp@call$formula)),
+                                           paste0(deparse(CombinedMod3_tmp@call$formula)),
+                                           paste0(deparse(CombinedMod4_tmp@call$formula)),
+                                           paste0(deparse(CombinedMod5_tmp@call$formula))),
+                                 Link=list(family(CombinedMod1_tmp)$linkinv,
+                                        family(CombinedMod2_tmp)$linkinv,
+                                        family(CombinedMod3_tmp)$linkinv,
+                                        family(CombinedMod4_tmp)$linkinv,
+                                        family(CombinedMod5_tmp)$linkinv),
+                                 Model=list(broom.mixed::tidy(CombinedMod1_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod2_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod3_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod4_tmp,effects="fixed"),
+                                            broom.mixed::tidy(CombinedMod5_tmp,effects="fixed")),
+                                 Model_obj=list(CombinedMod1_tmp,
+                                                CombinedMod2_tmp,
+                                                CombinedMod3_tmp,
+                                                CombinedMod4_tmp,
+                                                CombinedMod5_tmp),
+                                 Prediction=list(dplyr::bind_cols(NewData,
+                                                                  tibble::as_tibble(merTools::predictInterval(CombinedMod1_tmp,
+                                                                                                              NewData, n.sims = 1000))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  tibble::as_tibble(merTools::predictInterval(CombinedMod2_tmp,
+                                                                                                              NewData, n.sims = 1000))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  tibble::as_tibble(merTools::predictInterval(CombinedMod3_tmp,
+                                                                                                              NewData, n.sims = 1000))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  tibble::as_tibble(merTools::predictInterval(CombinedMod4_tmp,
+                                                                                                              NewData, n.sims = 1000))),
+                                                 dplyr::bind_cols(NewData,
+                                                                  tibble::as_tibble(merTools::predictInterval(CombinedMod5_tmp,
+                                                                                                              NewData, n.sims = 1000)))),
+                                 Raw=list(tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) ,
+                                          tmp_df %>%
+                                            dplyr::group_by(Var1,Var2) %>%
+                                            dplyr::summarise(Mean=mean(Response,na.rm=TRUE),
+                                                             Se=se(Response),
+                                                             CI=(sd(Response)*1.96)/2) )) %>%
+            dplyr::mutate(Metric=Metrics[[i]])
+
+          BestOutput<-Output %>%
+            dplyr::filter(AIC$df==Good_dfs_min[[1]] & AIC$AICc==BestAICc$AICc)
+
+
+          BestOutput$Prediction[[1]][,7]<-((BestOutput$Prediction[[1]][,5]-BestOutput$Prediction[[1]][,6])/3.92)
+
+          names(BestOutput$Prediction[[1]])<-c("Var1",
+                                               "Var2",
+                                               "RandomVar1",
+                                               "fit_resp",
+                                               "upr_resp",
+                                               "lwr_resp",
+                                               "se_resp")
+
+        }
+
 
         BestModels1<-BestOutput
 
@@ -431,7 +617,7 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
 
     if(length(Metrics)>1) {for (j in seq_along(Metrics)){
 
-      print(paste0("Assessing Metric:: ", Metrics[[j]]))
+      print(paste0("Assessing Metric: ", Metrics[[j]]))
 
       tmp_df<-Input_df %>%
         dplyr::filter(Metric==Metrics[[j]]& !Response%in%NA & !Var1%in%NA & !Var2%in%NA & !RandomVar1%in%NA)
@@ -495,12 +681,12 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
                                                Mod3_tmp,
                                                Mod4_tmp,
                                                Mod5_tmp ),
-                               Formula=c(Mod1_tmp$formula,
+                               Formula=list(Mod1_tmp$formula,
                                          Mod2_tmp$formula,
                                          Mod3_tmp$formula,
                                          Mod4_tmp$formula,
                                          Mod5_tmp$formula),
-                               Link=c(family(Mod1_tmp)$linkinv,
+                               Link=list(family(Mod1_tmp)$linkinv,
                                       family(Mod2_tmp)$linkinv,
                                       family(Mod3_tmp)$linkinv,
                                       family(Mod4_tmp)$linkinv,
@@ -589,12 +775,12 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
                                                Mod3_tmp,
                                                Mod4_tmp,
                                                Mod5_tmp ),
-                               Formula=c(Mod1_tmp$formula,
+                               Formula=list(Mod1_tmp$formula,
                                          Mod2_tmp$formula,
                                          Mod3_tmp$formula,
                                          Mod4_tmp$formula,
                                          Mod5_tmp$formula),
-                               Link=c(family(Mod1_tmp)$linkinv,
+                               Link=list(family(Mod1_tmp)$linkinv,
                                       family(Mod1_tmp)$linkinv,
                                       family(Mod1_tmp)$linkinv,
                                       family(Mod1_tmp)$linkinv,
@@ -683,12 +869,12 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
                                                Mod3_tmp,
                                                Mod4_tmp,
                                                Mod5_tmp ),
-                               Formula=c(paste0(deparse(Mod1_tmp$call$formula)),
+                               Formula=list(paste0(deparse(Mod1_tmp$call$formula)),
                                          paste0(deparse(Mod1_tmp$call$formula)),
                                          paste0(deparse(Mod1_tmp$call$formula)),
                                          paste0(deparse(Mod1_tmp$call$formula)),
                                          paste0(deparse(Mod1_tmp$call$formula))),
-                               Link=c("identity",
+                               Link=list("identity",
                                       "identity",
                                       "identity",
                                       "identity",
@@ -801,7 +987,7 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
     }}
     if(length(Metrics)==1) {
 
-      print(paste0("Assessing Metric:: ", Metrics[[1]]))
+      print(paste0("Assessing Metric: ", Metrics[[1]]))
 
       tmp_df<-Input_df %>%
         dplyr::filter(!Response%in%NA &
@@ -864,12 +1050,12 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
                                                Mod3_tmp,
                                                Mod4_tmp,
                                                Mod5_tmp ),
-                               Formula=c(Mod1_tmp$formula,
+                               Formula=list(Mod1_tmp$formula,
                                          Mod2_tmp$formula,
                                          Mod3_tmp$formula,
                                          Mod4_tmp$formula,
                                          Mod5_tmp$formula),
-                               Link=c(family(Mod1_tmp)$linkinv,
+                               Link=list(family(Mod1_tmp)$linkinv,
                                       family(Mod2_tmp)$linkinv,
                                       family(Mod3_tmp)$linkinv,
                                       family(Mod4_tmp)$linkinv,
@@ -957,12 +1143,12 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
                                                Mod3_tmp,
                                                Mod4_tmp,
                                                Mod5_tmp ),
-                               Formula=c(Mod1_tmp$formula,
+                               Formula=list(Mod1_tmp$formula,
                                          Mod2_tmp$formula,
                                          Mod3_tmp$formula,
                                          Mod4_tmp$formula,
                                          Mod5_tmp$formula),
-                               Link=c(family(Mod1_tmp)$linkinv,
+                               Link=list(family(Mod1_tmp)$linkinv,
                                       family(Mod2_tmp)$linkinv,
                                       family(Mod3_tmp)$linkinv,
                                       family(Mod4_tmp)$linkinv,
@@ -1052,12 +1238,12 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
                                                Mod3_tmp,
                                                Mod4_tmp,
                                                Mod5_tmp ),
-                               Formula=c(paste0(deparse(Mod1_tmp$call$formula)),
+                               Formula=list(paste0(deparse(Mod1_tmp$call$formula)),
                                          paste0(deparse(Mod2_tmp$call$formula)),
                                          paste0(deparse(Mod3_tmp$call$formula)),
                                          paste0(deparse(Mod4_tmp$call$formula)),
                                          paste0(deparse(Mod5_tmp$call$formula))),
-                               Link=c("identity",
+                               Link=list("identity",
                                       "identity",
                                       "identity",
                                       "identity",
