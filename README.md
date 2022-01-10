@@ -224,10 +224,44 @@ colourplot6<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("Orkney")
 
+colourplot7<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species),
+             size = 1)+
+  geom_smooth(aes(color=species),method = "lm")+
+  labs(x="Flipper Length (mm)",
+       y="Body Mass (g)",
+       color="SAS Bede",
+       title="SAS Palette")+
+  Utilities.Package::theme_Bede()+
+  Utilities.Package::scale_colour_Bede("SAS")
+
+colourplot8<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species),
+             size = 1)+
+  geom_smooth(aes(color=species),method = "lm")+
+  labs(x="Flipper Length (mm)",
+       y="Body Mass (g)",
+       color="AnnePort Bede",
+       title="AnnePort Palette")+
+  Utilities.Package::theme_Bede()+
+  Utilities.Package::scale_colour_Bede("AnnePort")
+
+colourplot9<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species),
+             size = 1)+
+  geom_smooth(aes(color=species),method = "lm")+
+  labs(x="Flipper Length (mm)",
+       y="Body Mass (g)",
+       color="BathyBlues Bede",
+       title="BathyBlues Palette")+
+  Utilities.Package::theme_Bede()+
+  Utilities.Package::scale_colour_Bede("Bathy_Blues")
 
 colourplot1+colourplot2+
   colourplot3+colourplot4+
-  colourplot5+colourplot6 &
+  colourplot5+colourplot6+
+  colourplot7+colourplot8 +
+  colourplot9 &
   theme(legend.position = c(0.15,0.7))
 ```
 
@@ -274,7 +308,25 @@ map4<-ggplot()+
   labs(x="Longitude",
        y="Latitude")
 
-(map1+map2)/(map3+map4)
+map5<-ggplot()+
+  geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
+  geom_polygon(data = nz, aes(x = long, y = lat, group = group),
+               fill = "forestgreen", colour = "black",alpha=0.4)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m) SAS Pallette",'SAS',discrete=FALSE)+
+  Utilities.Package::theme_Bede()+
+  labs(x="Longitude",
+       y="Latitude")
+
+map6<-ggplot()+
+  geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
+  geom_polygon(data = nz, aes(x = long, y = lat, group = group),
+               fill = "forestgreen", colour = "black",alpha=0.4)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m) AnnePort Pallette",'AnnePort',discrete=FALSE)+
+  Utilities.Package::theme_Bede()+
+  labs(x="Longitude",
+       y="Latitude")
+
+(map1+map2)/(map3+map4)/(map5+map6)
 ```
 
 <img src="man/figures/README-mapping-1.png" width="100%" />

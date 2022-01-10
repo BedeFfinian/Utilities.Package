@@ -13,8 +13,12 @@ se(x)
 This function calculates Standard Error
 }
 \examples{
+
 vec<-rnorm(200,0)
+
 vec_se<-se(vec)
+
 vec_se
+
 }
 \keyword{se}

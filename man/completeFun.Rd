@@ -15,8 +15,14 @@ completeFun(data, desiredCols)
 This function remove NA rows
 }
 \examples{
-df<-data.frame(A=c(1,2,3,NA),B=c("a",NA,"c","d"),C=c("Z","Y",NA,"W"))
-df_1<-completeFun(df,desiredCols=c("B","C"))
+
+df<-data.frame(A=c(1,2,3,NA),
+               B=c("a",NA,"c","d"),
+               C=c("Z","Y",NA,"W"))
+
+df_1<-completeFun(data=df,
+                  desiredCols=c("B","C"))
+
 df_1
 }
 \keyword{NAs}

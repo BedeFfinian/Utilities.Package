@@ -5,9 +5,13 @@
 #' @keywords se
 #' @export
 #' @examples
+#'
 #' vec<-rnorm(200,0)
+#'
 #' vec_se<-se(vec)
+#'
 #' vec_se
+#'
 
 
 se<-function(x){

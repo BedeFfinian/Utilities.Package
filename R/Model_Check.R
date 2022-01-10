@@ -5,7 +5,9 @@
 #' @keywords Model Diagnostics
 #' @export
 #' @examples
+#'
 #' model <- lm(mpg ~ wt + cyl, data = mtcars)
+#'
 #' Model_Check(model)
 
 Model_Check <- function(Model){

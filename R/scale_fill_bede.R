@@ -7,8 +7,15 @@
 #' @keywords Colours Palettes
 #' @export
 #' @examples
-#' df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10),Treatment=rep(c("A","B"),50))
-#' ggplot(df,aes(x=x,y=y,fill=Treatment))+geom_point()+scale_fill_Bede("SAS")
+#'
+#' df<- data.frame(x=rep(seq(1,10,1),10),
+#'                 y=rep(rnorm(10,4),10),
+#'                 Treatment=rep(c("A","B"),50))
+#'
+#' ggplot(df,aes(x=x,y=y,fill=Treatment))+
+#' geom_point()+
+#' scale_fill_Bede("SAS")
+#'
 
 scale_fill_Bede <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
   pal <- Bede_pal(palette = palette, reverse = reverse)

@@ -13,7 +13,9 @@ Model_Check(Model)
 This function Plots Model Diagnostics fitted values vs residuals, qqnorm plot, histogram of residuals and Auto Correlation Factor.
 }
 \examples{
+
 model <- lm(mpg ~ wt + cyl, data = mtcars)
+
 Model_Check(model)
 }
 \keyword{Diagnostics}

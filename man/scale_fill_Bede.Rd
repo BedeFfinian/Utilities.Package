@@ -17,8 +17,15 @@ scale_fill_Bede(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 These function add colours to add to ggplot fill scales
 }
 \examples{
-df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10),Treatment=rep(c("A","B"),50))
-ggplot(df,aes(x=x,y=y,fill=Treatment))+geom_point()+scale_fill_Bede("SAS")
+
+df<- data.frame(x=rep(seq(1,10,1),10),
+                y=rep(rnorm(10,4),10),
+                Treatment=rep(c("A","B"),50))
+
+ggplot(df,aes(x=x,y=y,fill=Treatment))+
+geom_point()+
+scale_fill_Bede("SAS")
+
 }
 \keyword{Colours}
 \keyword{Palettes}

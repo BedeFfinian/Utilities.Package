@@ -7,8 +7,14 @@
 #' @keywords Insert
 #' @export
 #' @examples
-#' df<-data.frame(a=c(1,3,4,5),b=c("a","c","d","e"),c=c("z","x","w","u"))
-#' df_1<-insertRow(df,c(2,"b","y"),2)
+#' df<-data.frame(a=c(1,3,4,5),
+#'                b=c("a","c","d","e"),
+#'                c=c("z","x","w","u"))
+#'
+#' df_1<-insertRow(data=df,
+#'                 newrow=c(2,"b","y"),
+#'                 r=2)
+#'
 #' df_1
 
 insertRow <- function(data, newrow, r) {
