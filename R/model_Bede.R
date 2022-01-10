@@ -56,14 +56,12 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
       Good_dfs<-NULL
       Output<-NULL
       BestOutput<-NULL
-      print("Test1")
 
 
       NewData<-data.frame(Var1=Input_df$Var1,
                           Var2=Input_df$Var2,
                           RandomVar1=Input_df$RandomVar1) %>%
         dplyr::distinct()
-      print("Test2")
 
 
       if(length(Metrics)>1) { for (i in seq_along(Metrics)){
@@ -71,47 +69,27 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
 
         tmp_df<-Input_df %>%
           dplyr::filter(Metric==Metrics[[i]]& !Response%in%NA & !Var1%in%NA & !Var2%in%NA & !RandomVar1%in%NA)
-        print("Test3")
         if(!as.character(unique(tmp_df$Family))=="gaussian"){
-          tryCatch({
             CombinedMod1_tmp<-glmmADMB::glmmadmb(Response~Var1*Var2+(1|RandomVar1),data=tmp_df,
                                                family=as.character(unique(tmp_df$Family)))
-          }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
-          print("Test4")
 
-          if(is.null(CombinedMod1_tmp)){CombinedMod1_tmp<-FakeMod}
 
-          tryCatch({
           CombinedMod2_tmp<-glmmADMB::glmmadmb(Response~Var1+Var2+(1|RandomVar1),data=tmp_df,
                                                family=as.character(unique(tmp_df$Family)))
-          }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
-          print("Test5")
 
-          if(is.null(CombinedMod2_tmp)){CombinedMod2_tmp<-FakeMod}
 
-          tryCatch({
           CombinedMod3_tmp<-glmmADMB::glmmadmb(Response~Var2+(1|RandomVar1),data=tmp_df,
                                                family=as.character(unique(tmp_df$Family)))
-          }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
 
-          if(is.null(CombinedMod3_tmp)){CombinedMod3_tmp<-FakeMod}
-          print("Test6")
 
-          tryCatch({
           CombinedMod4_tmp<-glmmADMB::glmmadmb(Response~Var1+(1|RandomVar1),data=tmp_df,
                                                family=as.character(unique(tmp_df$Family)))
-          }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
 
-          if(is.null(CombinedMod4_tmp)){CombinedMod4_tmp<-FakeMod}
-          print("Test7")
 
-          tryCatch({
           CombinedMod5_tmp<-glmmADMB::glmmadmb(Response~1+(1|RandomVar1),data=tmp_df,
                                                family=as.character(unique(tmp_df$Family)))
-          }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
 
-          if(is.null(CombinedMod5_tmp)){CombinedMod5_tmp<-FakeMod}
-          print("Test8")
+
 
         }
 
@@ -126,6 +104,7 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
         }
 
 
+        print("Test9")
 
 
         AIC_Values<-MuMIn::AICc(CombinedMod1_tmp,
@@ -136,16 +115,20 @@ model_Bede <- function(Input_df,Response,Var1,Var2,RandomVar1,Metric,Mixed,Famil
           dplyr::mutate(deltaAIC=AICc-min(AICc,na.rm = TRUE),
                         GoodBad=dplyr::case_when(deltaAIC<=2~"Good",
                                                  deltaAIC>2~"Bad"))
+        print("Test10")
 
         Good_dfs<-AIC_Values %>%
           dplyr::filter(GoodBad=="Good")
+        print("Test11")
 
         Good_dfs_min<-min(Good_dfs$df)
+        print("Test12")
 
         BestAICc<-AIC_Values %>%
           dplyr::filter(GoodBad=="Good" & df==Good_dfs_min[[1]])
 
 
+        print("Test13")
 
 
         Output<-tibble::tibble(AIC=MuMIn::AICc(CombinedMod1_tmp,
