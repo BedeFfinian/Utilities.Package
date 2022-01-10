@@ -12,6 +12,9 @@
 #' @param Categorical.x logical, TRUE if x is categorical, FALSE if x is not categorical. When categorical x, no raw data (data from df_mean) is plotted
 #' @keywords Model Predictions
 #' @export
+#' @import ggplot2
+#' @import patchwork
+#' @import purrr
 #' @examples
 #' library(purrr)
 #' library(patchwork)
