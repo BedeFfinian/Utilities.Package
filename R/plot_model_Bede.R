@@ -140,8 +140,8 @@ df_pred<-as.data.frame(df_pred)
         guides(linetype=ggplot2::guide_legend(override.aes=list(fill=NA)))+
         ggtitle(paste0(Metric,": ",deparse(Formula)))+
         scale_y_continuous(name=paste0(Metric),
-                           limits = c(min(df_pred$lwr_resp,(min(df_mean$Mean)-max(df_mean$CI))),
-                                      max(df_pred$upr_resp,(max(df_mean$Mean)+max(df_mean$CI)))),
+                           limits = c(min(df_pred$lwr_resp),
+                                      max(df_pred$upr_resp)),
                            oob = scales::squish)})
 
 
