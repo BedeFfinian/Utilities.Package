@@ -33,7 +33,7 @@ plot_model_Bede(
 
 \item{xlabel}{the label to be written below x axis}
 
-\item{Categorical.x}{logical, TRUE if x is categorical, FALSE if x is not categorical.}
+\item{Categorical.x}{logical, TRUE if x is categorical, FALSE if x is not categorical. When categorical x, no raw data (data from df_mean) is plotted}
 }
 \description{
 This Function creates a ggplot of Model Predictions using a X variable (xvar) and treatment (colourvar)

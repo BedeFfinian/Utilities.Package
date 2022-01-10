@@ -9,7 +9,7 @@
 #' @param colourvar the name of the column in df_mean and df_pred to be plotted as the colour
 #' @param pallette the colour palette to select from Utilities.Package (default="main")
 #' @param xlabel the label to be written below x axis
-#' @param Categorical.x logical, TRUE if x is categorical, FALSE if x is not categorical.
+#' @param Categorical.x logical, TRUE if x is categorical, FALSE if x is not categorical. When categorical x, no raw data (data from df_mean) is plotted
 #' @keywords Model Predictions
 #' @export
 #' @examples
