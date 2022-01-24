@@ -41,10 +41,10 @@ Bede_colours <- c(
   `SAS_1`="#dbb13b",
   `SAS_2`="#2494a2",
   `AnnePort1`="#f5f8fd",
-  `AnnePort2`="#a8c7d9",
-  `AnnePort3`="#74a9ad",
-  `AnnePort4`="#aaccd6",
-  `AnnePort5`="#bec3c5"
+  `AnnePort2`="#bec3c5",
+  `AnnePort3`="#aaccd6",
+  `AnnePort4`="#a8c7d9",
+  `AnnePort5`="#74a9ad"
 )
 
 Bede_cols <- function(...) {
