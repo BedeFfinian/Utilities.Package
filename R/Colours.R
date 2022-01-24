@@ -38,15 +38,13 @@ Bede_colours <- c(
   `BathyBlue7`="#042f66",
   `BathyBlue8`="#22496d",
   `BathyBlue9`="#5e24d6",
-  `BathyBlue10`="#19243b",
   `SAS_1`="#dbb13b",
   `SAS_2`="#2494a2",
   `AnnePort1`="#f5f8fd",
   `AnnePort2`="#a8c7d9",
   `AnnePort3`="#74a9ad",
   `AnnePort4`="#aaccd6",
-  `AnnePort5`="#bec3c5",
-  `AnnePort6`="#c0b6a5"
+  `AnnePort5`="#bec3c5"
 )
 
 Bede_cols <- function(...) {
@@ -80,11 +78,11 @@ Bede_palettes <- list(
   `Bathy_Blues`= Bede_cols("BathyBlue0","BathyBlue1","BathyBlue2",
                            "BathyBlue3","BathyBlue4","BathyBlue5",
                            "BathyBlue6","BathyBlue7","BathyBlue8",
-                           "BathyBlue9","BathyBlue10"),
+                           "BathyBlue9"),
   `SAS`=Bede_cols("SAS_1","SAS_2"),
 
   `AnnePort` = Bede_cols("AnnePort1", "AnnePort2","AnnePort3",
-                         "AnnePort4", "AnnePort5","AnnePort6")
+                         "AnnePort4", "AnnePort5")
 )
 
 Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
