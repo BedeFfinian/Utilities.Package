@@ -28,3 +28,17 @@ Import:
 	tidyr,
 	magrittr,
 	merTools
+Depends:
+	ggplot2,
+	cowplot,
+	MuMIn,
+	broom,
+	broom.mixed,
+	dplyr,
+	lme4,
+	mgcv,
+	patchwork,
+	purrr,
+	tidyr,
+	magrittr,
+	merTools
