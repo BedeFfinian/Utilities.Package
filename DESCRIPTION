@@ -16,4 +16,15 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Import:
 	ggplot2,
-	cowplot
+	cowplot,
+	MuMIn,
+	broom,
+	broom.mixed,
+	dplyr,
+	lme4,
+	mgcv,
+	patchwork,
+	purrr,
+	tidyr,
+	magrittr,
+	merTools
