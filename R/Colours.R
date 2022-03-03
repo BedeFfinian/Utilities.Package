@@ -45,7 +45,7 @@ Bede_colours <- c(
   `AnnePort3`="#aaccd6",
   `AnnePort4`="#a8c7d9",
   `AnnePort5`="#74a9ad",
-  `CarbonViridis0`="#450d54",
+  `CarbonViridis0`="#553e8d",
   `CarbonViridis1`="#482879",
   `CarbonViridis2`="#3d4a89",
   `CarbonViridis3`="#30688f",

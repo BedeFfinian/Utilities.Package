@@ -324,7 +324,25 @@ map6<-ggplot()+
   labs(x="Longitude",
        y="Latitude")
 
-(map1+map2)/(map3+map4)/(map5+map6)
+map7<-ggplot()+
+  geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
+  geom_polygon(data = nz, aes(x = long, y = lat, group = group),
+               fill = "forestgreen", colour = "black",alpha=0.4)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m) Carbon Viridis Pallette",'Carbon_Viridis',discrete=FALSE)+
+  Utilities.Package::theme_Bede()+
+  labs(x="Longitude",
+       y="Latitude")
+
+map8<-ggplot()+
+  geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
+  geom_polygon(data = nz, aes(x = long, y = lat, group = group),
+               fill = "forestgreen", colour = "black",alpha=0.4)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m) Carbon Viridis Pallette (reversed)",'Carbon_Viridis',discrete=FALSE,reverse = TRUE)+
+  Utilities.Package::theme_Bede()+
+  labs(x="Longitude",
+       y="Latitude")
+
+(map1+map2)/(map3+map4)/(map5+map6)/(map7+map8)
 ```
 
 <img src="man/figures/README-mapping-1.png" width="100%" />
