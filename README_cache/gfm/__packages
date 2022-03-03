@@ -1,10 +1,4 @@
 base
-methods
-datasets
-utils
-grDevices
-graphics
-stats
 marmap
 tidyverse
 ggplot2
@@ -23,3 +17,13 @@ maps
 mapdata
 palmerpenguins
 patchwork
+cowplot
+MuMIn
+broom
+broom.mixed
+nlme
+mgcv
+magrittr
+MASS
+arm
+merTools

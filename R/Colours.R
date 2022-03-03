@@ -44,7 +44,19 @@ Bede_colours <- c(
   `AnnePort2`="#bec3c5",
   `AnnePort3`="#aaccd6",
   `AnnePort4`="#a8c7d9",
-  `AnnePort5`="#74a9ad"
+  `AnnePort5`="#74a9ad",
+  `CarbonViridis0`="#450d54",
+  `CarbonViridis1`="#482879",
+  `CarbonViridis2`="#3d4a89",
+  `CarbonViridis3`="#30688f",
+  `CarbonViridis4`="#25838e",
+  `CarbonViridis5`="#1f9f89",
+  `CarbonViridis6`="#36b779",
+  `CarbonViridis7`="#6ece59",
+  `CarbonViridis8`="#b4de2c",
+  `CarbonViridis9`="#fde825",
+  `CarbonViridis10`="#fd6a32"
+
 )
 
 Bede_cols <- function(...) {
@@ -82,7 +94,11 @@ Bede_palettes <- list(
   `SAS`=Bede_cols("SAS_1","SAS_2"),
 
   `AnnePort` = Bede_cols("AnnePort1", "AnnePort2","AnnePort3",
-                         "AnnePort4", "AnnePort5")
+                         "AnnePort4", "AnnePort5"),
+  `Carbon_Viridis`= Bede_cols("CarbonViridis0","CarbonViridis1","CarbonViridis2",
+                              "CarbonViridis3","CarbonViridis4","CarbonViridis5",
+                              "CarbonViridis6","CarbonViridis7","CarbonViridis8",
+                              "CarbonViridis9","CarbonViridis10")
 )
 
 Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
