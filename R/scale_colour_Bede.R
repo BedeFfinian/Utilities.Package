@@ -17,12 +17,12 @@
 #' scale_colour_Bede("SAS")
 #'
 
-scale_colour_Bede <- function(palette = "main", alpha = 1, discrete = TRUE, reverse = FALSE, ...) {
-  pal <- Bede_pal(palette = palette, reverse = reverse,alpha=alpha)
+scale_colour_Bede <- function(palette = "main",  discrete = TRUE, reverse = FALSE, ...) {
+  pal <- Bede_pal(palette = palette, reverse = reverse)
 
   if (discrete) {
     ggplot2::discrete_scale("colour", paste0("Bede_", palette), palette = pal, ...)
   } else {
-    ggplot2::scale_colour_gradientn(colours = pal(256,alpha), ...)
+    ggplot2::scale_colour_gradientn(colours = pal(256), ...)
   }
 }
