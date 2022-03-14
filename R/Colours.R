@@ -55,7 +55,10 @@ Bede_colours <- c(
   `CarbonViridis7`="#6ece59",
   `CarbonViridis8`="#b4de2c",
   `CarbonViridis9`="#fde825",
-  `CarbonViridis10`="#fd6a32"
+  `CarbonViridis10`="#fd6a32",
+  `CarbonViridis11`="#e4494f",
+  `CarbonDouble1`="#DAA520",
+  `CarbonDouble2`="#008B8B"
 
 )
 
@@ -98,7 +101,9 @@ Bede_palettes <- list(
   `Carbon_Viridis`= Bede_cols("CarbonViridis0","CarbonViridis1","CarbonViridis2",
                               "CarbonViridis3","CarbonViridis4","CarbonViridis5",
                               "CarbonViridis6","CarbonViridis7","CarbonViridis8",
-                              "CarbonViridis9","CarbonViridis10")
+                              "CarbonViridis9"),
+
+  `CarbonDouble`=Bede_cols("CarbonDouble1","CarbonDouble2")
 )
 
 Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
@@ -109,3 +114,4 @@ Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
   grDevices::colorRampPalette(pal,alpha=TRUE, ...)
 
 }
+
