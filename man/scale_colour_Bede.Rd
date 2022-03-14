@@ -4,10 +4,18 @@
 \alias{scale_colour_Bede}
 \title{Scale Colour Function}
 \usage{
-scale_colour_Bede(palette = "main", discrete = TRUE, reverse = FALSE, ...)
+scale_colour_Bede(
+  palette = "main",
+  alpha = 1,
+  discrete = TRUE,
+  reverse = FALSE,
+  ...
+)
 }
 \arguments{
 \item{palette}{Select one of the preset colour palettes within the package. "main" is default. other options include "cool", "hot","mixed", "grey", "mussels" "bathy", "PhD", "Orkney", "Bathy_Blues" and "SAS"}
+
+\item{alpha}{add alpha to the legend for continuous scale bars (consistent over whole range of colour)}
 
 \item{discrete}{Select whether colour scale is discrete or not. Automatic unless selected. TRUE is default.}
 
@@ -24,7 +32,7 @@ df<- data.frame(x=rep(seq(1,10,1),10),
 
 ggplot(df,aes(x=x,y=y,colour=Treatment))+
 geom_point()+
-scale_colour_Bede("SAS")
+scale_colour_Bede("SAS",alpha=0.8)
 
 }
 \keyword{Colours}

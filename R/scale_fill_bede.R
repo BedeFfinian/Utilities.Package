@@ -4,6 +4,7 @@
 #' @param palette Select one of the preset colour palettes within the package. "main" is default. other options include "cool", "hot","mixed", "grey", "mussels" "bathy", "PhD", "Orkney", "Bathy_Blues" and "SAS"
 #' @param discrete Select whether colour scale is discrete or not. Automatic unless selected. TRUE is default.
 #' @param reverse Select which direction a scale should be applied.
+#' #' @param alpha add alpha to the legend for continuous scale bars (consistent over whole range of colour)
 #' @keywords Colours Palettes
 #' @export
 #' @examples
@@ -14,15 +15,15 @@
 #'
 #' ggplot(df,aes(x=x,y=y,fill=Treatment))+
 #' geom_point()+
-#' scale_fill_Bede("SAS")
+#' scale_fill_Bede("SAS",alpha=0.6)
 #'
 
-scale_fill_Bede <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+scale_fill_Bede <- function(palette = "main",alpha=1, discrete = TRUE, reverse = FALSE, ...) {
   pal <- Bede_pal(palette = palette, reverse = reverse)
 
   if (discrete) {
     ggplot2::discrete_scale("fill", paste0("Bede_", palette), palette = pal, ...)
   } else {
-    ggplot2::scale_fill_gradientn(colours = pal(256), ...)
+    ggplot2::scale_fill_gradientn(colours = addalpha(pal(256),alpha=alpha), ...)
   }
 }
