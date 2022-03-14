@@ -4,13 +4,7 @@
 \alias{scale_colour_Bede}
 \title{Scale Colour Function}
 \usage{
-scale_colour_Bede(
-  palette = "main",
-  alpha = 1,
-  discrete = TRUE,
-  reverse = FALSE,
-  ...
-)
+scale_colour_Bede(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 }
 \arguments{
 \item{palette}{Select one of the preset colour palettes within the package. "main" is default. other options include "cool", "hot","mixed", "grey", "mussels" "bathy", "PhD", "Orkney", "Bathy_Blues" and "SAS"}
