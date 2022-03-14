@@ -4,7 +4,13 @@
 \alias{scale_fill_Bede}
 \title{Scale Fill Functions}
 \usage{
-scale_fill_Bede(palette = "main", discrete = TRUE, reverse = FALSE, ...)
+scale_fill_Bede(
+  palette = "main",
+  alpha = 1,
+  discrete = TRUE,
+  reverse = FALSE,
+  ...
+)
 }
 \arguments{
 \item{palette}{Select one of the preset colour palettes within the package. "main" is default. other options include "cool", "hot","mixed", "grey", "mussels" "bathy", "PhD", "Orkney", "Bathy_Blues" and "SAS"}
