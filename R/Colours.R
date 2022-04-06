@@ -60,7 +60,12 @@ Bede_colours <- c(
   `CarbonViridis10`="#fd6a32",
   `CarbonViridis11`="#e4494f",
   `CarbonDouble1`="#DAA520",
-  `CarbonDouble2`="#008B8B"
+  `CarbonDouble2`="#008B8B",
+  `LymeOC`="#cccccc",
+  `LymePVC`="#6e8b3d",
+  `LymeSA`="#DAA520",
+  `LymeSI`="#e86a28"
+
 
 )
 
@@ -89,6 +94,8 @@ Bede_palettes <- list(
   `bathy` = Bede_cols("light blue","dark cyan", "dark blue", "dark purple"),
 
   `PhD` = Bede_cols("dark cyan", "light grey", "dark gold"),
+
+  `Lyme` = Bede_cols("LymeOC", "LymePVC", "LymeSA", "LymeSI"),
 
   `Orkney` = Bede_cols("Orkney RN", "Orkney RS", "Orkney WC"),
 
