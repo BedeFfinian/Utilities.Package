@@ -18,6 +18,8 @@ Bede_colours()
 Bede_cols()
 Bede_Palettes()
 Bede_pal()
+colorRampPaletteAlpha()
+addalpha()
 }
 \keyword{Colours}
 \keyword{Palettes}

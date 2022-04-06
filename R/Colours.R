@@ -8,6 +8,8 @@
 #' Bede_cols()
 #' Bede_Palettes()
 #' Bede_pal()
+#' colorRampPaletteAlpha()
+#' addalpha()
 
 Bede_colours <- c(
   `red`        = "#bd1c1c",
@@ -106,12 +108,28 @@ Bede_palettes <- list(
   `CarbonDouble`=Bede_cols("CarbonDouble1","CarbonDouble2")
 )
 
-Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
+addalpha <- function(colors, alpha=1.0) {
+  r <- col2rgb(colors, alpha=T)
+  # Apply alpha
+  r[4,] <- alpha*255
+  r <- r/255.0
+  return(rgb(r[1,], r[2,], r[3,], r[4,]))
+}
+
+
+Bede_pal <- function(palette = "main", reverse = FALSE, alpha=TRUE,...) {
   pal <- Bede_palettes[[palette]]
 
   if (reverse) pal <- rev(pal)
 
-  grDevices::colorRampPalette(pal, ...)
+  grDevices::colorRampPalette(pal, alpha=TRUE,...)
+
 
 }
+
+
+
+
+
+
 
