@@ -62,7 +62,7 @@ Bede_colours <- c(
   `CarbonDouble1`="#DAA520",
   `CarbonDouble2`="#008B8B",
   `LymeOC`="#cccccc",
-  `LymePVC`="#6e8b3d",
+  `LymePVC`="#008b8b",
   `LymeSA`="#DAA520",
   `LymeSI`="#e86a28"
 
