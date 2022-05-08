@@ -3,6 +3,14 @@
 #' This Function applies a glm/glmm models applying model selection using AICc to input into plot_model_Bede()
 #' It can handle beta, gamma and poisson models with ease, gaussian is currently in development
 #' @param Input_df a wide dataframe of Species by Site.
+#' @param Total.Abundance logical: if you want this metric. Default is TRUE
+#' @param Number.Taxa logical: if you want this metric. Default is TRUE
+#' @param Shannons logical: if you want this metric. Default is TRUE
+#' @param Pielou logical: if you want this metric. Default is TRUE
+#' @param Simpsons logical: if you want this metric. Default is TRUE
+#' @param Rare logical: if you want this metric (See vegan). Default is TRUE
+#' @param NRare number of species for Rarefy (see vegan). Default is 50
+#' @param output output "Long" or "Wide". "Long" is default
 #' @keywords Model
 #' @export
 #' @examples

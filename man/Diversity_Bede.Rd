@@ -19,6 +19,22 @@ Diversity_Bede(
 }
 \arguments{
 \item{Input_df}{a wide dataframe of Species by Site.}
+
+\item{Total.Abundance}{logical: if you want this metric. Default is TRUE}
+
+\item{Number.Taxa}{logical: if you want this metric. Default is TRUE}
+
+\item{Shannons}{logical: if you want this metric. Default is TRUE}
+
+\item{Pielou}{logical: if you want this metric. Default is TRUE}
+
+\item{Simpsons}{logical: if you want this metric. Default is TRUE}
+
+\item{NRare}{number of species for Rarefy (see vegan). Default is 50}
+
+\item{output}{output "Long" or "Wide". "Long" is default}
+
+\item{Rare}{logical: if you want this metric (See vegan). Default is TRUE}
 }
 \description{
 This Function applies a glm/glmm models applying model selection using AICc to input into plot_model_Bede()
