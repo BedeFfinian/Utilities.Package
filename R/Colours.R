@@ -67,7 +67,7 @@ Bede_colours <- c(
   `LymeSI`="#e86a28",
   `Macro5_1`="#a59515",
   `Macro5_2`="#389318",
-  `Macro5_3`="#8f6f00",
+  `Macro5_3`="#5c573a",
   `Macro5_4`="#96b82b",
   `Macro5_5`="#e0e809"
 
