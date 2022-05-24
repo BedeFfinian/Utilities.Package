@@ -64,7 +64,12 @@ Bede_colours <- c(
   `LymeOC`="#cccccc",
   `LymePVC`="#008b8b",
   `LymeSA`="#DAA520",
-  `LymeSI`="#e86a28"
+  `LymeSI`="#e86a28",
+  `Macro5_1`="#a59515",
+  `Macro5_2`="#389318",
+  `Macro5_3`="#8f6f00",
+  `Macro5_4`="#96b82b",
+  `Macro5_5`="#e0e809"
 
 
 )
@@ -112,7 +117,9 @@ Bede_palettes <- list(
                               "CarbonViridis6","CarbonViridis7","CarbonViridis8",
                               "CarbonViridis9"),
 
-  `CarbonDouble`=Bede_cols("CarbonDouble1","CarbonDouble2")
+  `CarbonDouble`=Bede_cols("CarbonDouble1","CarbonDouble2"),
+
+  `Macro5`=Bede_cols("Macro5_1","Macro5_2","Macro5_3","Macro5_4","Macro5_5")
 )
 
 addalpha <- function(colors, alpha=1.0) {
