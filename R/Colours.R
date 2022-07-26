@@ -69,7 +69,9 @@ Bede_colours <- c(
   `Macro5_2`="#389318",
   `Macro5_3`="#5c573a",
   `Macro5_4`="#96b82b",
-  `Macro5_5`="#e0e809"
+  `Macro5_5`="#e0e809",
+  `Pilar_Old`="#e4ca75",
+  `Pilar_Young`="#56a9b4"
 
 
 )
@@ -119,7 +121,9 @@ Bede_palettes <- list(
 
   `CarbonDouble`=Bede_cols("CarbonDouble1","CarbonDouble2"),
 
-  `Macro5`=Bede_cols("Macro5_1","Macro5_2","Macro5_3","Macro5_4","Macro5_5")
+  `Macro5`=Bede_cols("Macro5_1","Macro5_2","Macro5_3","Macro5_4","Macro5_5"),
+
+  `Pilar`=Bede_cols("Pilar_Old","Pilar_Young")
 )
 
 addalpha <- function(colors, alpha=1.0) {
