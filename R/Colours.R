@@ -65,11 +65,13 @@ Bede_colours <- c(
   `LymePVC`="#008b8b",
   `LymeSA`="#DAA520",
   `LymeSI`="#e86a28",
-  `Macro5_1`="#a59515",
-  `Macro5_2`="#389318",
-  `Macro5_3`="#5c573a",
-  `Macro5_4`="#96b82b",
-  `Macro5_5`="#e0e809",
+  `Macro_1`="#a59515",
+  `Macro_2`="#389318",
+  `Macro_3`="#5c573a",
+  `Macro_4`="#96b82b",
+  `Macro_5`="#e0e809",
+  `Macro_6`="#70543e",
+  `Macro_7`="#C2B280",
   `Pilar_Old`="#e4ca75",
   `Pilar_Young`="#56a9b4"
 
@@ -121,7 +123,10 @@ Bede_palettes <- list(
 
   `CarbonDouble`=Bede_cols("CarbonDouble1","CarbonDouble2"),
 
-  `Macro5`=Bede_cols("Macro5_1","Macro5_2","Macro5_3","Macro5_4","Macro5_5"),
+  `Macro5`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4","Macro_5"),
+
+  `Macro7`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4",
+                     "Macro_5","Macro_6","Macro_7"),
 
   `Pilar`=Bede_cols("Pilar_Old","Pilar_Young")
 )
