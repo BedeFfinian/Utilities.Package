@@ -65,7 +65,7 @@ Bede_colours <- c(
   `LymePVC`="#008b8b",
   `LymeSA`="#DAA520",
   `LymeSI`="#e86a28",
-  `Macro_1`="#711534",
+  `Macro_1`="#60827c",
   `Macro_2`="#389318",
   `Macro_3`="#873e23",
   `Macro_4`="#768807",
