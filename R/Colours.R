@@ -71,7 +71,6 @@ Bede_colours <- c(
   `Macro_4`="#768807",
   `Macro_5`="#e0e809",
   `Macro_6`="#70543e",
-  `Macro_7`="#C2B280",
   `Pilar_Old`="#e4ca75",
   `Pilar_Young`="#56a9b4"
 
@@ -125,8 +124,8 @@ Bede_palettes <- list(
 
   `Macro5`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4","Macro_5"),
 
-  `Macro7`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4",
-                     "Macro_5","Macro_6","Macro_7"),
+  `Macro6`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4",
+                     "Macro_5","Macro_6"),
 
   `Pilar`=Bede_cols("Pilar_Old","Pilar_Young")
 )
