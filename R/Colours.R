@@ -124,6 +124,8 @@ Bede_palettes <- list(
 
   `Macro5`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4","Macro_6"),
 
+  `Macro5_noBS`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4","Macro_5"),
+
   `Macro6`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4",
                      "Macro_5","Macro_6"),
 
