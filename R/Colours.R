@@ -72,9 +72,12 @@ Bede_colours <- c(
   `Macro_5`="#e0e809",
   `Macro_6`="#70543e",
   `Pilar_Old`="#e4ca75",
-  `Pilar_Young`="#56a9b4"
-
-
+  `Pilar_Young`="#56a9b4",
+  `Low`="#2d85c5",
+  `LowMiddle`="#61bdee",
+  `Middle`="#e2e2e2",
+  `HighMiddle`="#dc6e55",
+  `High`="#c33726"
 )
 
 Bede_cols <- function(...) {
@@ -129,7 +132,9 @@ Bede_palettes <- list(
   `Macro6`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4",
                      "Macro_5","Macro_6"),
 
-  `Pilar`=Bede_cols("Pilar_Old","Pilar_Young")
+  `Pilar`=Bede_cols("Pilar_Old","Pilar_Young"),
+
+  `Climate`=Bede_cols("Low","LowMiddle","Middle","HighMiddle","High")
 )
 
 addalpha <- function(colors, alpha=1.0) {
