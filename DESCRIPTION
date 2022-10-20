@@ -17,30 +17,16 @@ RoxygenNote: 7.2.1
 Import:
 	ggplot2,
 	cowplot,
-	MuMIn,
-	broom,
-	broom.mixed,
 	dplyr,
-	lme4,
-	mgcv,
-	vegan,
 	patchwork,
 	purrr,
 	tidyr,
-	magrittr,
-	merTools
+	magrittr
 Depends:
 	ggplot2,
 	cowplot,
-	MuMIn,
-	vegan,
-	broom,
-	broom.mixed,
 	dplyr,
-	lme4,
-	mgcv,
 	patchwork,
 	purrr,
 	tidyr,
-	magrittr,
-	merTools
+	magrittr
