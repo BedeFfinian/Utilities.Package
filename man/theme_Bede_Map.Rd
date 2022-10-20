@@ -7,7 +7,7 @@
 theme_Bede_Map(...)
 }
 \description{
-This function adds a custom theme to ggplots
+This function adds a custom theme to ggplots specifcally for Maps over large reas (Region Scales)
 }
 \examples{
 df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10))

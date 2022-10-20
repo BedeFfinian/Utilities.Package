@@ -14,9 +14,9 @@ This function Plots Model Diagnostics fitted values vs residuals, qqnorm plot, h
 }
 \examples{
 
-model <- lm(mpg ~ wt + cyl, data = mtcars)
+Model <- lm(mpg ~ wt + cyl, data = mtcars)
 
-Model_Check(model)
+Model_Check(Model)
 }
 \keyword{Diagnostics}
 \keyword{Model}

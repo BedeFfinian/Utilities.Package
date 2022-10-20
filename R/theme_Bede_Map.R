@@ -1,6 +1,6 @@
 #' A ggplot Theme Function
 #'
-#' This function adds a custom theme to ggplots
+#' This function adds a custom theme to ggplots specifcally for Maps over large reas (Region Scales)
 #' @keywords Theme
 #' @export
 #' @examples
