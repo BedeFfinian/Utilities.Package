@@ -134,7 +134,7 @@ Bede_palettes <- list(
 
   `Pilar`=Bede_cols("Pilar_Old","Pilar_Young"),
 
-  `Climate`=Bede_cols("Low","LowMiddle","Middle","HighMiddle","High")
+  `Climate`=Bede_cols("Low","LowMiddle","HighMiddle","High")
 )
 
 addalpha <- function(colors, alpha=1.0) {
