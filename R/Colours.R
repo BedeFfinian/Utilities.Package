@@ -134,9 +134,6 @@ Bede_palettes <- list(
   `Macro6`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4",
                      "Macro_5","Macro_6"),
 
-  `Drone`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4",
-                     "Macro_5","Macro_6","Macro_3","Macro_4",
-                    "Macro_5","Macro_6"),
 
   `Pilar`=Bede_cols("Pilar_Old","Pilar_Young"),
 
