@@ -77,7 +77,11 @@ Bede_colours <- c(
   `LowMiddle`="#61bdee",
   `Middle`="#e2e2e2",
   `HighMiddle`="#dc6e55",
-  `High`="#c33726"
+  `High`="#c33726",
+  `Air_Ganges`="#c0c0c0",
+  `Sed_Ganges`="#bf982d",
+  `Wat_Ganges`="#3e999b"
+
 )
 
 Bede_cols <- function(...) {
@@ -133,7 +137,7 @@ Bede_palettes <- list(
 
   `Macro6`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4",
                      "Macro_5","Macro_6"),
-
+  `Ganges`=Bede_cols("Air_Ganges","Sed_Ganges","Wat_Ganges"),
 
   `Pilar`=Bede_cols("Pilar_Old","Pilar_Young"),
 
