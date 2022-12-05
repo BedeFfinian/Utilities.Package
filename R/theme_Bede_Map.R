@@ -13,7 +13,7 @@ theme_Bede_Map <- function(...){
   ggplot2::theme(
     plot.background = ggplot2::element_rect(fill = "transparent", colour = NA),
     legend.key = ggplot2::element_rect(fill = "white"),
-    panel.border = ggplot2::element_rect(colour = "black", fill=NA, size=1),
+    panel.border = ggplot2::element_rect(colour = "black", fill=NA, linewidth=1),
     legend.position=c(.99,.98),
     legend.justification = c("right", "top"),
     legend.box.just = "right",
@@ -22,7 +22,7 @@ theme_Bede_Map <- function(...){
     panel.background = ggplot2::element_blank(), # bg of the panel
     panel.grid.major = ggplot2::element_line(linetype = "dotted",
                                              colour="grey30",
-                                             size=0.25),
+                                             linewidth=0.25),
     panel.ontop = TRUE,
     panel.grid.minor = ggplot2::element_blank(), # get rid of legend panel bg,
     axis.text.x = ggplot2::element_text(size = 14,
@@ -30,6 +30,7 @@ theme_Bede_Map <- function(...){
     axis.text.y = ggplot2::element_text(colour = "black",
                                         size = 12),
     axis.title = ggplot2::element_text(colour = "black",
-                                       size = 12)
+                                       size = 12),
+    ...
   )
 }
