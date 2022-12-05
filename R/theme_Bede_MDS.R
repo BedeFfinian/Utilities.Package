@@ -8,7 +8,7 @@
 #' ggplot(df,aes(x=x,y=y))+geom_point()+theme_Bede_MDS()
 
 
-theme_Bede <- function(...){
+theme_Bede_MDS <- function(...){
 
   ggplot2::theme_classic()+
     ggplot2::theme(panel.grid = ggplot2::element_line(color = "#b4aea9"),
