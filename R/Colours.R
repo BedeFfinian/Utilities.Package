@@ -89,7 +89,7 @@ Bede_colours <- c(
   `Drone_Phaeohyta`="#873e23",
   `Drone_Rhodophyta`="#b3002d",
   `Drone_SunGlint`="#FFFFFF",
-  `Drone_Water`="#873e23",
+  `Drone_Water`="#42c9bc",
   `Drone_Xantho`="#cccc00"
 
 )
