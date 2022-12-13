@@ -80,7 +80,17 @@ Bede_colours <- c(
   `High`="#c33726",
   `Air_Ganges`="#c0c0c0",
   `Sed_Ganges`="#bf982d",
-  `Wat_Ganges`="#3e999b"
+  `Wat_Ganges`="#3e999b",
+  `Drone_BareSed`="#70543e",
+  `Drone_Chlorophyta`="#b3ff1a",
+  `Drone_DeepSed`="#000000",
+  `Drone_MPB`="#DAA520",
+  `Drone_Magnoliopsida`="#389318",
+  `Drone_Phaeohyta`="#873e23",
+  `Drone_Rhodophyta`="#b3002d",
+  `Drone_SunGlint`="#FFFFFF",
+  `Drone_Water`="#873e23",
+  `Drone_Xantho`="#cccc00"
 
 )
 
@@ -141,7 +151,11 @@ Bede_palettes <- list(
 
   `Pilar`=Bede_cols("Pilar_Old","Pilar_Young"),
 
-  `Climate`=Bede_cols("Low","LowMiddle","HighMiddle","High")
+  `Climate`=Bede_cols("Low","LowMiddle","HighMiddle","High"),
+
+  `Drone`=Bede_cols("Drone_BareSed","Drone_Chlorophyta","Drone_DeepSed","Drone_MPB",
+                    "Drone_Magnoliopsida","Drone_Phaeohyta","Drone_Rhodophyta",
+                    "Drone_SunGlint","Drone_Water","Drone_Xantho")
 )
 
 addalpha <- function(colors, alpha=1.0) {
