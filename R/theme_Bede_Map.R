@@ -22,8 +22,7 @@ theme_Bede_Map <- function(...){
     panel.background = ggplot2::element_blank(), # bg of the panel
     panel.grid.major = ggplot2::element_line(linetype = "dotted",
                                              colour="grey30",
-                                             linewidth=0.25,
-                                             alpha=0.4),
+                                             linewidth=0.25),
     panel.ontop = TRUE,
     panel.grid.minor = ggplot2::element_blank(),
     axis.text.x = ggplot2::element_text(size = 14,
