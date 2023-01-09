@@ -90,7 +90,8 @@ Bede_colours <- c(
   `Drone_Rhodophyta`="#b3002d",
   `Drone_SunGlint`="#FFFFFF",
   `Drone_Water`="#42c9bc",
-  `Drone_Xantho`="#cccc00"
+  `Drone_Xantho`="#cccc00",
+  `Drone_NAN`="#c6edec"
 
 )
 
@@ -154,6 +155,10 @@ Bede_palettes <- list(
   `Climate`=Bede_cols("Low","LowMiddle","HighMiddle","High"),
 
   `Drone`=Bede_cols("Drone_BareSed","Drone_Chlorophyta","Drone_DeepSed","Drone_MPB",
+                    "Drone_Magnoliopsida","Drone_Phaeohyta","Drone_Rhodophyta",
+                    "Drone_SunGlint","Drone_Water","Drone_Xantho"),
+
+  `Drone`=Bede_cols("Drone_NAN","Drone_BareSed","Drone_Chlorophyta","Drone_DeepSed","Drone_MPB",
                     "Drone_Magnoliopsida","Drone_Phaeohyta","Drone_Rhodophyta",
                     "Drone_SunGlint","Drone_Water","Drone_Xantho")
 )
