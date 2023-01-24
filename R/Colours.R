@@ -138,7 +138,9 @@ Bede_palettes <- list(
                               "CarbonViridis6","CarbonViridis7","CarbonViridis8",
                               "CarbonViridis9"),
 
-  `CarbonDouble`=Bede_cols("CarbonDouble1","CarbonDouble2"),
+  `CarbonDouble`=Bede_cols("CarbonDouble1","CarbonDouble2","CarbonViridis0"),
+
+  `CarbonTriple`=Bede_cols("CarbonDouble1","CarbonDouble2","CarbonDouble3"),
 
   `Macro5`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4","Macro_6"),
 
