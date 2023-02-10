@@ -152,6 +152,8 @@ Bede_palettes <- list(
                      "Macro_5","Macro_6"),
   `Ganges`=Bede_cols("Air_Ganges","Sed_Ganges","Wat_Ganges"),
 
+  `Ganges_Ordered`=Bede_cols("Air_Ganges","Wat_Ganges","Sed_Ganges"),
+
   `Pilar`=Bede_cols("Pilar_Old","Pilar_Young"),
 
   `Climate`=Bede_cols("Low","LowMiddle","HighMiddle","High"),
