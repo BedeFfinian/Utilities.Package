@@ -174,7 +174,11 @@ Bede_palettes <- list(
 
   `Drone_LowZos`=Bede_cols("Drone_BareSed","Drone_Chlorophyta","Drone_DeepSed","Drone_LowZos",
                            "Drone_MPB","Drone_Magnoliopsida","Drone_Phaeohyta","Drone_Rhodophyta",
-                         "Drone_SunGlint_Silver","Drone_Water","Drone_Xantho")
+                         "Drone_SunGlint_Silver","Drone_Water","Drone_Xantho"),
+
+  `S2_First`=Bede_cols("Drone_BareSed","Drone_Chlorophyta","Drone_MPB","Drone_Magnoliopsida",
+                       "Drone_Phaeohyta","Drone_Rhodophyta",
+                       "Drone_Water","Drone_Xantho")
 )
 
 addalpha <- function(colors, alpha=1.0) {
