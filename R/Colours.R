@@ -181,7 +181,7 @@ Bede_palettes <- list(
                        "Drone_Phaeohyta","Drone_Rhodophyta",
                        "Drone_Water","Drone_Xantho"),
 
-  `S2_Fourth`=Bede_cols("Drone_BareSed","Drone_BareSand","Drone_Chlorophyta","Drone_Magnoliopsida",
+  `S2_Fourth`=Bede_cols("Drone_BareSand","Drone_BareSed","Drone_Chlorophyta","Drone_Magnoliopsida",
                         "Drone_MPB",
                        "Drone_Phaeohyta","Drone_Rhodophyta",
                        "Drone_Water","Drone_Xantho")
