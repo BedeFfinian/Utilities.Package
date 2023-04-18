@@ -173,6 +173,11 @@ Bede_palettes <- list(
                          "Drone_Magnoliopsida","Drone_Phaeohyta","Drone_Rhodophyta",
                          "Drone_SunGlint_Silver","Drone_Water","Drone_Xantho"),
 
+  `Drone_Paper`=Bede_cols("Drone_BareSed","Drone_Chlorophyta",
+                          "Drone_Magnoliopsida","Drone_MPB",
+                          "Drone_Phaeohyta","Drone_Rhodophyta",
+                          "Drone_Water","Drone_Xantho"),
+
   `Drone_LowZos`=Bede_cols("Drone_BareSed","Drone_Chlorophyta","Drone_DeepSed","Drone_LowZos",
                            "Drone_MPB","Drone_Magnoliopsida","Drone_Phaeohyta","Drone_Rhodophyta",
                          "Drone_SunGlint_Silver","Drone_Water","Drone_Xantho"),
