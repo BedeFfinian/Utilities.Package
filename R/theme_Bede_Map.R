@@ -31,6 +31,8 @@ theme_Bede_Map <- function(...){
                                         size = 12),
     axis.title = ggplot2::element_text(colour = "black",
                                        size = 12),
+    strip.background = element_rect(fill = "white",
+                                    colour = "black", linewidth = rel(2)),
     ...
   )
 }
