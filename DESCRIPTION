@@ -7,7 +7,7 @@ Authors@R:
            role = c("cre"),
            email = "bedeffinian@gmail.com",
            comment = c(ORCID = "0000-0001-6462-4347"))
-Description: A suite of functions utilised by myself for easy of analysis of data and creating clearer code.
+Description: A suite of functions utilised by myself for ease of analysis of data and creating clearer code.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
