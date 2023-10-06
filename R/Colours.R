@@ -94,7 +94,18 @@ Bede_colours <- c(
   `Drone_Water`="#42c9bc",
   `Drone_Xantho`="#cccc00",
   `Drone_NAN`="#c6edec",
-  `Drone_SunGlint_Silver`="#c0c0c0"
+  `Drone_SunGlint_Silver`="#c0c0c0",
+  `Arctic_Basin_01`="#3d26ab",
+  `Arctic_Baffin_02`="#4542e7",
+  `Arctic_Canadian_03`="#4765ff",
+  `Arctic_Beaufort_04`="#2d91ea",
+  `Arctic_Chukchi_05`="#30a9d9",
+  `Arctic_EastSib_06`="#29bfb5",
+  `Arctic_Laptev_07`="#4ccc86",
+  `Arctic_Kara_08`="#9fcb41",
+  `Arctic_Barents_09`="#eaba33",
+  `Arctic_North_10`="#fcd32c"
+
 
 )
 
@@ -194,7 +205,18 @@ Bede_palettes <- list(
   `S2_Sixth`=Bede_cols("Drone_BareSand","Drone_BareSed","Drone_Chlorophyta","Drone_Magnoliopsida",
                         "Drone_MPB",
                         "Drone_Phaeohyta","Drone_Rhodophyta",
-                        "Drone_Water","Drone_Xantho","Drone_SunGlint_Silver")
+                        "Drone_Water","Drone_Xantho","Drone_SunGlint_Silver"),
+
+  `Arctic_Regions`=Bede_cols("Arctic_Basin_01",
+                             "Arctic_Baffin_02",
+                             "Arctic_Canadian_03",
+                             "Arctic_Beaufort_04",
+                             "Arctic_Chukchi_05",
+                             "Arctic_EastSib_06",
+                             "Arctic_Laptev_07",
+                             "Arctic_Kara_08",
+                             "Arctic_Barents_09",
+                             "Arctic_North_10")
   )
 
 addalpha <- function(colors, alpha=1.0) {
