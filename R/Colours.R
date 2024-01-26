@@ -172,6 +172,8 @@ Bede_palettes <- list(
 
   `Climate`=Bede_cols("Low","LowMiddle","HighMiddle","High"),
 
+  `ClimateGreen`=Bede_cols("Drone_LowZos","Macro_2","HighMiddle","High"),
+
   `Drone`=Bede_cols("Drone_BareSed","Drone_Chlorophyta","Drone_DeepSed","Drone_MPB",
                     "Drone_Magnoliopsida","Drone_Phaeohyta","Drone_Rhodophyta",
                     "Drone_SunGlint","Drone_Water","Drone_Xantho"),
