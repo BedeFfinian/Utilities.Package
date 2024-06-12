@@ -164,6 +164,11 @@ Bede_palettes <- list(
 
   `Macro6`=Bede_cols("Macro_1","Macro_2","Macro_3","Macro_4",
                      "Macro_5","Macro_6"),
+
+  `InvaSeaSpectra`=Bede_cols("Macro_1","Macro_2","Macro_3",
+                             "Drone_Rhodophyta","Macro_4",
+                            "Macro_5"),
+
   `Ganges`=Bede_cols("Air_Ganges","Sed_Ganges","Wat_Ganges"),
 
   `Ganges_Ordered`=Bede_cols("Air_Ganges","Wat_Ganges","Sed_Ganges"),
