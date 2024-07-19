@@ -104,8 +104,18 @@ Bede_colours <- c(
   `Arctic_Laptev_07`="#4ccc86",
   `Arctic_Kara_08`="#9fcb41",
   `Arctic_Barents_09`="#eaba33",
-  `Arctic_North_10`="#fcd32c"
-
+  `Arctic_North_10`="#fcd32c",
+  `Jersey_Coarse_Sediments`="#a6cee3",
+  `Jersey_Fine_Sediments`="#1f78b4",
+  `Jersey_Cobbles_and_Pebbles`="#b2df8a",
+  `Jersey_Rocky_Reef`="#cab2d6",
+  `Jersey_Kelp_Forest`="#ff7f00",
+  `Jersey_Hard_Ground`="#e31a1c",
+  `Jersey_Slipper_Limpets`="#fdbf6f",
+  `Jersey_Maerl_Beds`="#6a3d9a",
+  `Jersey_Sand_Mason_Worms`="#ffff99",
+  `Jersey_Offshore_Mixed_Sediments`="#fb9a99",
+  `Jersey_Seagrass`="#33a02c"
 
 )
 
@@ -223,7 +233,26 @@ Bede_palettes <- list(
                              "Arctic_Laptev_07",
                              "Arctic_Kara_08",
                              "Arctic_Barents_09",
-                             "Arctic_North_10")
+                             "Arctic_North_10"),
+
+  `JerseyHabs_All`=Bede_cols("Jersey_Coarse_Sediments",
+                             "Jersey_Fine_Sediments",
+                             "Jersey_Cobbles_and_Pebbles",
+                             "Jersey_Rocky_Reef",
+                             "Jersey_Kelp_Forest",
+                             "Jersey_Hard_Ground",
+                             "Jersey_Slipper_Limpets",
+                             "Jersey_Maerl_Beds",
+                             "Jersey_Sand_Mason_Worms",
+                             "Jersey_Offshore_Mixed_Sediments",
+                             "Jersey_Seagrass"),
+
+  `JerseyHabs_Short`=Bede_cols("Jersey_Seagrass",
+                               "Jersey_Sand_Mason_Worms",
+                               "Jersey_Fine_Sediments",
+                               "Jersey_Coarse_Sediments",
+                               "Jersey_Offshore_Mixed_Sediments",
+                               "Jersey_Maerl_Beds")
   )
 
 addalpha <- function(colors, alpha=1.0) {
