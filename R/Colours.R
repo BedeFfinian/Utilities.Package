@@ -247,6 +247,18 @@ Bede_palettes <- list(
                              "Jersey_Seagrass",
                              "Jersey_Slipper_Limpets"),
 
+  `JerseyHabs_SizeOrder`=Bede_cols("Jersey_Coarse_Sediments",
+                                   "Jersey_Hard_Ground",
+                             "Jersey_Cobbles_and_Pebbles",
+                             "Jersey_Fine_Sediments",
+                             "Jersey_Rocky_Reef",
+                             "Jersey_Kelp_Forest",
+                             "Jersey_Maerl_Beds",
+                             "Jersey_Offshore_Mixed_Sediments",
+                             "Jersey_Sand_Mason_Worms",
+                             "Jersey_Slipper_Limpets",
+                             "Jersey_Seagrass"),
+
   `JerseyHabs_Short_habs`=Bede_cols("Jersey_Seagrass",
                                "Jersey_Sand_Mason_Worms",
                                "Jersey_Fine_Sediments",
