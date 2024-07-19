@@ -113,7 +113,7 @@ Bede_colours <- c(
   `Jersey_Hard_Ground`="#e31a1c",
   `Jersey_Slipper_Limpets`="#fdbf6f",
   `Jersey_Maerl_Beds`="#6a3d9a",
-  `Jersey_Sand_Mason_Worms`="#ffff99",
+  `Jersey_Sand_Mason_Worms`="#eaba33",
   `Jersey_Offshore_Mixed_Sediments`="#fb9a99",
   `Jersey_Seagrass`="#33a02c"
 
@@ -247,12 +247,17 @@ Bede_palettes <- list(
                              "Jersey_Seagrass",
                              "Jersey_Slipper_Limpets"),
 
-  `JerseyHabs_Short`=Bede_cols("Jersey_Seagrass",
+  `JerseyHabs_Short_habs`=Bede_cols("Jersey_Seagrass",
                                "Jersey_Sand_Mason_Worms",
                                "Jersey_Fine_Sediments",
                                "Jersey_Coarse_Sediments",
                                "Jersey_Offshore_Mixed_Sediments",
-                               "Jersey_Maerl_Beds")
+                               "Jersey_Maerl_Beds"),
+
+  `JerseyHabs_Short_depth`=Bede_cols("Jersey_Seagrass",
+                                    "Jersey_Fine_Sediments",
+                                    "Jersey_Coarse_Sediments",
+                                    "Jersey_Sand_Mason_Worms")
   )
 
 addalpha <- function(colors, alpha=1.0) {
