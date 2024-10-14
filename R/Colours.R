@@ -352,16 +352,16 @@ Bede_palettes <- list(
                             "Batlow_MaxExtent_30"),
 
   `S2_Max_Countries_Atlantic`=Bede_cols("S2_Europe",
-                                        "S2_UK",
                                         "S2_Germany",
-                                        "S2_Ireland",
-                                        "S2_Denmark",
+                                        "S2_UK",
                                         "S2_Netherlands",
-                                        "S2_Belgium",
+                                        "S2_Denmark",
                                         "S2_France",
-                                        "S2_Spain",
                                         "S2_Portugal",
-                                        "S2_Norway"),
+                                        "S2_Ireland",
+                                        "S2_Spain",
+                                        "S2_Norway",
+                                        "S2_Belgium"),
 
 
   `S2_Max_Countries_Med`=Bede_cols("S2_Europe",
