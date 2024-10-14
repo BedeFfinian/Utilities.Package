@@ -365,16 +365,16 @@ Bede_palettes <- list(
 
 
   `S2_Max_Countries_Med`=Bede_cols("S2_Europe",
-                                   "S2_Greece",
                                    "S2_Italy",
-                                   "S2_Montenegro",
-                                   "S2_Turkey",
+                                   "S2_Greece",
                                    "S2_France",
-                                   "S2_Slovenia",
+                                   "S2_Turkey",
                                    "S2_Spain",
-                                   "S2_Croatia",
                                    "S2_Albania",
-                                   "S2_Cyprus")
+                                   "S2_Montenegro",
+                                   "S2_Croatia",
+                                   "S2_Cyprus",
+                                   "S2_Slovenia")
 
   )
 
