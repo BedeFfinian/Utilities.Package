@@ -413,11 +413,11 @@ Bede_palettes <- list(
                                    "S2_Slovenia"),
 
 
-  `Elise_Ecological_Niche`=Bede_cols("Elise_NS",
+  `Elise_Culture_Media`=Bede_cols("Elise_NS",
                                      "Elise_S"),
 
 
-  `Elise_Culture_Media`=Bede_cols("Elise_Marine",
+  `Elise_Ecological_Niche`=Bede_cols("Elise_Marine",
                                   "Elise_Organism",
                                   "Elise_Saltern",
                                   "Elise_Terrestrial"),
