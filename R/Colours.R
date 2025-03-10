@@ -164,7 +164,15 @@ Bede_colours <- c(
   `Batlow_MaxExtent_27`="#FDB7BF",
   `Batlow_MaxExtent_28`="#FCBED1",
   `Batlow_MaxExtent_29`="#FBC5E5",
-  `Batlow_MaxExtent_30`="#F9CCF9"
+  `Batlow_MaxExtent_30`="#F9CCF9",
+  `Elise_S`="#66c2a5",
+  `Elise_NS`="#fc8d62",
+  `Elise_Marine`="#386cb0",
+  `Elise_Organism`="#e78ac3",
+  `Elise_Saltern`="#ffd92f",
+  `Elise_Terrestrial`="#a6d854",
+  `Elise_Grey`="grey80",
+  `Elise_Violet`="#6a3d9a"
 
 )
 
@@ -402,7 +410,21 @@ Bede_palettes <- list(
                                    "S2_Croatia",
                                    "S2_Montenegro",
                                    "S2_Cyprus",
-                                   "S2_Slovenia")
+                                   "S2_Slovenia"),
+
+
+  `Elise_Ecological_Niche`=Bede_cols("Elise_NS",
+                                     "Elise_S"),
+
+
+  `Elise_Culture_Media`=Bede_cols("Elise_Marine",
+                                  "Elise_Organism",
+                                  "Elise_Saltern",
+                                  "Elise_Terrestrial"),
+
+
+  `Elise_AreaHeatMap`=Bede_cols("Elise_Grey",
+                                "Elise_Violet")
 
   )
 
