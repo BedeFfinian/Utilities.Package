@@ -424,6 +424,9 @@ Bede_palettes <- list(
 
 
   `Elise_AreaHeatMap`=Bede_cols("Elise_Grey",
+                                "Elise_Violet"),
+
+  `INVASEA_Phenology` =Bede_cols("Pilar_Young",
                                 "Elise_Violet")
 
   )
