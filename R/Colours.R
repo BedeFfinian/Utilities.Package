@@ -427,7 +427,13 @@ Bede_palettes <- list(
                                 "Elise_Violet"),
 
   `INVASEA_Phenology` =Bede_cols("Pilar_Young",
-                                "Elise_Violet")
+                                "Elise_Violet"),
+
+  `INVASEA_Type` =Bede_cols("Batlow_MaxExtent_22",
+                                 "S2_Ireland"),
+
+  `INVASEA_Oyster` =Bede_cols("Pilar_Old","Pilar_Young")
+
 
   )
 
