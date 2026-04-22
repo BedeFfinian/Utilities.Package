@@ -172,7 +172,16 @@ Bede_colours <- c(
   `Elise_Saltern`="#ffd92f",
   `Elise_Terrestrial`="#a6d854",
   `Elise_Grey`="grey80",
-  `Elise_Violet`="#6a3d9a"
+  `Elise_Violet`="#6a3d9a",
+  `RugOBSS_floatingBiomass`="#e4494f",
+  `RugOBSS_beachedBiomass`="#b3002d",
+  `RugOBSS_dryBeach`="#ffd92f",
+  `RugOBSS_wetBeach`="#70543e",
+  `RugOBSS_waveFoam`="grey80",
+  `RugOBSS_emergedRocks`="#AB8B2D",
+  `RugOBSS_submergedRocks`="#545454",
+  `RugOBSS_water`="#008B8B",
+  `RugOBSS_ODW`="#386cb0"
 
 )
 
@@ -432,7 +441,25 @@ Bede_palettes <- list(
   `INVASEA_Type` =Bede_cols("Batlow_MaxExtent_22",
                                  "S2_Ireland"),
 
-  `INVASEA_Oyster` =Bede_cols("Pilar_Old","Pilar_Young")
+  `INVASEA_Oyster` =Bede_cols("Pilar_Old","Pilar_Young"),
+
+  `RugOBSS_Training_early` = Bede_cols("RugOBSS_floatingBiomass",
+                                 "RugOBSS_beachedBiomass",
+                                 "RugOBSS_dryBeach",
+                                 "RugOBSS_wetBeach",
+                                 "RugOBSS_waveFoam",
+                                 "RugOBSS_emergedRocks",
+                                 "RugOBSS_submergedRocks"),
+
+  `RugOBSS_Training` = Bede_cols("RugOBSS_floatingBiomass",
+                                 "RugOBSS_beachedBiomass",
+                                 "RugOBSS_dryBeach",
+                                 "RugOBSS_wetBeach",
+                                 "RugOBSS_waveFoam",
+                                 "RugOBSS_emergedRocks",
+                                 "RugOBSS_submergedRocks",
+                                 "RugOBSS_water",
+                                 "RugOBSS_ODW")
 
 
   )
