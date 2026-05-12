@@ -4,8 +4,7 @@
 # Utilities.Package <img src="man/figures/logo.png" width="300px" height="200px" align="right" style="padding-left:10px;background-color:white;" />
 
 Primarily, Utilities.Package is a package of simple utility features for
-data manipulation. It also contains personalisable palettes and themes
-for ggplot2 plots.
+personalisable palettes and themes for ggplot2 plots.
 
 ## Installation
 
