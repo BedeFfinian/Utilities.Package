@@ -131,7 +131,7 @@ ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        colour="Species")+
-  theme_Mareta_Dark()
+  Utilities.Package::theme_Mareta_Dark()
 
 ```
 

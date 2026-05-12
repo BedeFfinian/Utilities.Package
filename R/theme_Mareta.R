@@ -2,11 +2,10 @@
 #'
 #' This function adds a custom theme to ggplots
 #' @keywords Theme
-#' @export
+#' @export theme_Mareta
 #' @examples
 #' df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10))
-#' ggplot(df,aes(x=x,y=y))+geom_point()+theme_Mareta_Dark()
-
+#' ggplot(df,aes(x=x,y=y))+geom_point()+theme_Mareta()
 
 theme_Mareta <- function(...){
 
@@ -33,7 +32,12 @@ theme_Mareta <- function(...){
                    ...)
 }
 
-
+#' This function adds a custom theme to ggplots
+#' @keywords Theme
+#' @export theme_Mareta_Dark
+#' @examples
+#' df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10))
+#' ggplot(df,aes(x=x,y=y))+geom_point()+theme_Mareta_Dark()
 
 theme_Mareta_Dark <- function(...){
 

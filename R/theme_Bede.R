@@ -2,7 +2,7 @@
 #'
 #' This function adds a custom theme to ggplots
 #' @keywords Theme
-#' @export
+#' @export theme_Bede
 #' @examples
 #' df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10))
 #' ggplot(df,aes(x=x,y=y))+geom_point()+theme_Bede()
@@ -31,6 +31,14 @@ theme_Bede <- function(...){
                    ...)
 }
 
+#' This function adds a custom theme to ggplots
+#' @keywords Theme
+#' @export theme_Bede_Dark
+#' @examples
+#' df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10))
+#' ggplot(df,aes(x=x,y=y))+geom_point()+theme_Bede_Dark()
+
+
 theme_Bede_Dark <- function(...){
 
   ggplot2::theme_classic()+
@@ -53,6 +61,12 @@ theme_Bede_Dark <- function(...){
                    ...)
 }
 
+#' This function adds a custom theme to ggplots
+#' @keywords Theme
+#' @export theme_Bede_MDS
+#' @examples
+#' df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10))
+#' ggplot(df,aes(x=x,y=y))+geom_point()+theme_Bede_MDS()
 
 theme_Bede_MDS <- function(...){
 
@@ -75,6 +89,13 @@ theme_Bede_MDS <- function(...){
                    axis.ticks.y=element_blank(),
                    ...)
 }
+
+#' This function adds a custom theme to ggplots
+#' @keywords Theme
+#' @export theme_Bede_Map
+#' @examples
+#' df<- data.frame(x=rep(seq(1,10,1),10),y=rep(rnorm(10,4),10))
+#' ggplot(df,aes(x=x,y=y))+geom_point()+theme_Bede_Map()
 
 theme_Bede_Map <- function(...){
 
