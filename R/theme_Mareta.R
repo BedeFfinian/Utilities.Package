@@ -46,7 +46,7 @@ theme_Mareta_Dark <- function(...){
                    panel.grid.major.y = ggplot2::element_blank(),
                    axis.line = ggplot2::element_line(colour = "grey50"),
                    rect = ggplot2::element_blank(),
-                   panel.background = ggplot2::rect(fill='grey20'), # bg of the panel
+                   panel.background = ggplot2::element_rect(fill='grey20'), # bg of the panel
                    panel.grid.major = ggplot2::element_line(linetype = "dotted",
                                                             colour="grey30",
                                                             linewidth=0.25),
