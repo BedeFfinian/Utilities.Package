@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # Utilities.Package <img src="man/figures/logo.png" width="300px" height="200px" align="right" style="padding-left:10px;background-color:white;" />
 
-Primarily, Utilities.Package is a package of simple utility features for data manipulation and simple statistics. It also contains personalisable palettes and themes for ggplot2 plots. 
+Primarily, Utilities.Package is a package of simple utility features for data manipulation. It also contains personalisable palettes and themes for ggplot2 plots. 
 
 ## Installation 
 
@@ -38,7 +38,6 @@ Before showing the features we need to gather some data to be able to look at th
 library(marmap)
 library(tidyverse)
 library(sf)
-library(lme4)
 library(Utilities.Package)
 library(mapdata)
 library(maps)
@@ -90,16 +89,6 @@ head(df2)
 
 ```
 
-
-Often we use regression models to assess data. If we want to check the assumptions of these models the base r functions suck. There are good packages to check these assumptions () but we also have another here. 
-
-```{r model check,fig.width=15}
-mod1<-lm(body_mass_g~.,data=df2)
-
-Utilities.Package::Model_Check(mod1)
-
-```
-
 ## Data Visualisation
 
 In Utilities.Package we have many functions to make figures look nicer (*we think*). Lets do a basic plot.
@@ -131,6 +120,21 @@ ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 ```
 
+That is maybe a bit too bright.... 
+
+```{r theme use,fig.width=15}
+
+ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(colour = species),
+             size = 1)+
+  geom_smooth(aes(colour=species),method = "lm")+
+  labs(x="Flipper Length (mm)",
+       y="Body Mass (g)",
+       colour="Species")+
+  theme_Mareta_Dark()
+
+```
+
 Okay that is better but lets make the colours nicer. 
 
 ```{r colour use,message=FALSE,fig.width=12,fig.height=10}
@@ -143,7 +147,7 @@ colourplot1<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
        y="Body Mass (g)",
        colour="main",
        title="Main Palette")+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Mareta_Dark()+
   Utilities.Package::scale_colour_Bede("main")
 
 colourplot2<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
@@ -154,7 +158,7 @@ colourplot2<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
        y="Body Mass (g)",
        colour="mixed",
        title="Mixed Palette")+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Mareta_Dark()+
   Utilities.Package::scale_colour_Bede("mixed")
 
 colourplot3<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
@@ -176,7 +180,7 @@ colourplot4<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
        y="Body Mass (g)",
        colour="hot",
        title="Hot Palette")+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Mareta_Dark()+
   Utilities.Package::scale_colour_Bede("hot")
 
 colourplot5<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
@@ -220,7 +224,7 @@ colourplot8<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
        y="Body Mass (g)",
        colour="AnnePort",
        title="AnnePort Palette")+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Mareta_Dark()+
   Utilities.Package::scale_colour_Bede("AnnePort")
 
 colourplot9<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
@@ -231,7 +235,7 @@ colourplot9<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
        y="Body Mass (g)",
        colour="Bathy_Blues",
        title="Bathy_Blues Palette")+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Mareta_Dark()+
   Utilities.Package::scale_colour_Bede("Bathy_Blues")
 
   (colourplot1+colourplot2+colourplot3)/
@@ -252,7 +256,7 @@ map1<-ggplot()+
                fill = "forestgreen", colour = "black",alpha=0.4)+
   Utilities.Package::scale_colour_Bede(name="Depth (m) Bathy_Blues Pallette",'Bathy_Blues',
                             discrete=FALSE,reverse=TRUE)+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
 
@@ -260,8 +264,8 @@ map2<-ggplot()+
   geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
-  Utilities.Package::scale_colour_Bede(name="Depth (m) Mixed Pallette",'mixed',discrete=FALSE)+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::scale_colour_Bede(name="Depth (m) Mixed Pallette",'S2_Max_Batlow_Pink',discrete=FALSE)+
+  Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
 
@@ -270,7 +274,7 @@ map3<-ggplot()+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
   Utilities.Package::scale_colour_Bede(name="Depth (m) PhD Pallette",'PhD',discrete=FALSE)+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
 
@@ -279,7 +283,7 @@ map4<-ggplot()+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
   Utilities.Package::scale_colour_Bede(name="Depth (m) Main Pallette",'main',discrete=FALSE)+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
 
@@ -288,7 +292,7 @@ map5<-ggplot()+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
   Utilities.Package::scale_colour_Bede(name="Depth (m) SAS Pallette",'SAS',discrete=FALSE)+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
 
@@ -297,7 +301,7 @@ map6<-ggplot()+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
   Utilities.Package::scale_colour_Bede(name="Depth (m) AnnePort Pallette",'AnnePort',discrete=FALSE)+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
 
@@ -306,7 +310,7 @@ map7<-ggplot()+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
   Utilities.Package::scale_colour_Bede(name="Depth (m) Carbon Viridis Pallette",'Carbon_Viridis',discrete=FALSE)+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
 
@@ -315,7 +319,7 @@ map8<-ggplot()+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
   Utilities.Package::scale_colour_Bede(name="Depth (m) Carbon Viridis Pallette (reversed)",'Carbon_Viridis',discrete=FALSE,reverse = TRUE)+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
 

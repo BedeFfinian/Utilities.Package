@@ -4,7 +4,8 @@
 
 on_load({
 
-  print("Hello How is your day going?")
+  sysfonts::font_add_google(name = "Poppins", family = "poppins")
+  showtext::showtext_auto()
 
 })
 

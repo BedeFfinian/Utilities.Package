@@ -22,6 +22,7 @@ Import:
 	tidyr,
 	magrittr,
 	showtext,
+	sysfonts,
 	rlang
 Depends:
 	ggplot2,
@@ -32,5 +33,6 @@ Depends:
 	tidyr,
 	magrittr,
 	showtext,
+	sysfonts,
 	rlang
 Config/roxygen2/version: 8.0.0
