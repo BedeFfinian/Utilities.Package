@@ -22,9 +22,9 @@ Primarily, Utilities.Package is a package of simple utility features for data ma
 You can install the development version of Utilities.Package from [Github](https://https://github.com) with:
 
 ``` r
-install.packages("devtools")
+install.packages("pak")
 
-devtools::install_github("bedeffinian/Utilities.Package")
+pak::pak("bedeffinian/Utilities.package")
 ```
 
 
