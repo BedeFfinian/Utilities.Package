@@ -11,7 +11,6 @@ theme_Mareta <- function(...){
 
   ggplot2::theme_classic()+
     ggplot2::theme(plot.title.position = "plot",
-                   panel.grid.major.y = ggplot2::element_blank(),
                    axis.line = ggplot2::element_line(colour = "black"),
                    rect = ggplot2::element_blank(),
                    panel.background = ggplot2::element_blank(), # bg of the panel
@@ -41,16 +40,14 @@ theme_Mareta_Dark <- function(...){
 
   ggplot2::theme_classic()+
     ggplot2::theme(plot.title.position = "plot",
-                   panel.grid.major.y = ggplot2::element_blank(),
                    axis.line = ggplot2::element_line(colour = "grey50"),
                    rect = ggplot2::element_blank(),
                    panel.background = ggplot2::element_rect(fill='grey20'), # bg of the panel
                    panel.grid.major = ggplot2::element_line(linetype = "dotted",
                                                             colour="grey30",
                                                             linewidth=0.25),
-                   panel.ontop = TRUE,
+                   plot.background=element_rect(fill='grey20'),
                    panel.grid.minor = ggplot2::element_blank(),
-                   plot.background=ggplot2::element_rect(fill=NA),
                    axis.title = ggplot2::element_text(colour='grey50',family='poppins'),
                    axis.text.y = ggplot2::element_text(colour='grey50',family='poppins'),
                    axis.text.x = ggplot2::element_text(colour='grey50',family='poppins'),

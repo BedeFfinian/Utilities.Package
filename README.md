@@ -280,8 +280,11 @@ map1<-ggplot()+
   geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
-  Utilities.Package::scale_colour_Bede(name="Depth (m) Bathy_Blues Pallette",'Bathy_Blues',
-                            discrete=FALSE,reverse=TRUE)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m)\nBathy_Blues Pallette",'Bathy_Blues',
+                            discrete=FALSE,reverse=TRUE,
+                            limits=c(0,-6000),
+                            breaks=c(0,-2000,-4000,-6000),
+                            labels=c("0","2000","4000","6000"))+
   Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
@@ -290,7 +293,11 @@ map2<-ggplot()+
   geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
-  Utilities.Package::scale_colour_Bede(name="Depth (m) Mixed Pallette",'S2_Max_Batlow_Pink',discrete=FALSE)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m)\nBatlow Pallette",'S2_Max_Batlow_Pink',
+                                       discrete=FALSE,reverse=TRUE,
+                            limits=c(0,-6000),
+                            breaks=c(0,-2000,-4000,-6000),
+                            labels=c("0","2000","4000","6000"))+
   Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
@@ -299,7 +306,11 @@ map3<-ggplot()+
   geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
-  Utilities.Package::scale_colour_Bede(name="Depth (m) PhD Pallette",'PhD',discrete=FALSE)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m)\nPhD Pallette",'PhD',
+                                       discrete=FALSE,
+                            limits=c(0,-6000),
+                            breaks=c(0,-2000,-4000,-6000),
+                            labels=c("0","2000","4000","6000"))+
   Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
@@ -308,7 +319,11 @@ map4<-ggplot()+
   geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
-  Utilities.Package::scale_colour_Bede(name="Depth (m) Main Pallette",'main',discrete=FALSE)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m)\nMain Pallette",'main',
+                                       discrete=FALSE,
+                            limits=c(0,-6000),
+                            breaks=c(0,-2000,-4000,-6000),
+                            labels=c("0","2000","4000","6000"))+
   Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
@@ -317,7 +332,11 @@ map5<-ggplot()+
   geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
-  Utilities.Package::scale_colour_Bede(name="Depth (m) SAS Pallette",'SAS',discrete=FALSE)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m)\nSAS Pallette",'SAS',
+                                       discrete=FALSE,
+                            limits=c(0,-6000),
+                            breaks=c(0,-2000,-4000,-6000),
+                            labels=c("0","2000","4000","6000"))+
   Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
@@ -326,7 +345,11 @@ map6<-ggplot()+
   geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
-  Utilities.Package::scale_colour_Bede(name="Depth (m) AnnePort Pallette",'AnnePort',discrete=FALSE)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m)\nAnnePort Pallette",'AnnePort',
+                                       discrete=FALSE,
+                            limits=c(0,-6000),
+                            breaks=c(0,-2000,-4000,-6000),
+                            labels=c("0","2000","4000","6000"))+
   Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
@@ -335,7 +358,10 @@ map7<-ggplot()+
   geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
-  Utilities.Package::scale_colour_Bede(name="Depth (m) Carbon Viridis Pallette",'Carbon_Viridis',discrete=FALSE)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m)\nCarbon Viridis Pallette",'Carbon_Viridis',discrete=FALSE,
+                            limits=c(0,-6000),
+                            breaks=c(0,-2000,-4000,-6000),
+                            labels=c("0","2000","4000","6000"))+
   Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
@@ -344,7 +370,10 @@ map8<-ggplot()+
   geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
-  Utilities.Package::scale_colour_Bede(name="Depth (m) Carbon Viridis Pallette (reversed)",'Carbon_Viridis',discrete=FALSE,reverse = TRUE)+
+  Utilities.Package::scale_colour_Bede(name="Depth (m)\nCarbon Viridis Pallette (reversed)",'Carbon_Viridis',discrete=FALSE,reverse = TRUE,
+                            limits=c(0,-6000),
+                            breaks=c(0,-2000,-4000,-6000),
+                            labels=c("0","2000","4000","6000"))+
   Utilities.Package::theme_Bede_Map()+
   labs(x="Longitude",
        y="Latitude")
