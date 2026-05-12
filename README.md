@@ -154,7 +154,7 @@ ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        colour="Species")+
-  theme_Mareta_Dark()
+  Utilities.Package::theme_Mareta_Dark()
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
 
@@ -194,7 +194,7 @@ colourplot3<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
        y="Body Mass (g)",
        colour="cool",
        title="Cool Palette")+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Mareta_Dark()+
   Utilities.Package::scale_colour_Bede("cool")
 
 colourplot4<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
@@ -205,7 +205,7 @@ colourplot4<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
        y="Body Mass (g)",
        colour="hot",
        title="Hot Palette")+
-  Utilities.Package::theme_Mareta_Dark()+
+  Utilities.Package::theme_Bede()+
   Utilities.Package::scale_colour_Bede("hot")
 
 colourplot5<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
@@ -238,7 +238,7 @@ colourplot7<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
        y="Body Mass (g)",
        colour="SAS",
        title="SAS Palette")+
-  Utilities.Package::theme_Bede()+
+  Utilities.Package::theme_Bede_Map()+
   Utilities.Package::scale_colour_Bede("SAS")
 
 colourplot8<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
@@ -249,7 +249,7 @@ colourplot8<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
        y="Body Mass (g)",
        colour="AnnePort",
        title="AnnePort Palette")+
-  Utilities.Package::theme_Mareta_Dark()+
+  Utilities.Package::theme_Bede_Map()+
   Utilities.Package::scale_colour_Bede("AnnePort")
 
 colourplot9<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
@@ -260,7 +260,7 @@ colourplot9<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
        y="Body Mass (g)",
        colour="Bathy_Blues",
        title="Bathy_Blues Palette")+
-  Utilities.Package::theme_Mareta_Dark()+
+  Utilities.Package::theme_Bede_Map()+
   Utilities.Package::scale_colour_Bede("Bathy_Blues")
 
   (colourplot1+colourplot2+colourplot3)/
