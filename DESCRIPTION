@@ -21,7 +21,8 @@ Import:
 	purrr,
 	tidyr,
 	magrittr,
-	showtext
+	showtext,
+	rlang
 Depends:
 	ggplot2,
 	cowplot,
@@ -30,5 +31,6 @@ Depends:
 	purrr,
 	tidyr,
 	magrittr,
-	showtext
+	showtext,
+	rlang
 Config/roxygen2/version: 8.0.0
