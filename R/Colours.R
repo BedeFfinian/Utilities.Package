@@ -173,17 +173,17 @@ Bede_colours <- c(
   `Elise_Terrestrial`="#a6d854",
   `Elise_Grey`="grey80",
   `Elise_Violet`="#6a3d9a",
-  `RugOBSS_floatingBiomass`="#e4494f",
-  `RugOBSS_beachedBiomass`='#4D3A1B',
+  `RugOBSS_floatingBiomass`="#BF674C",
+  `RugOBSS_beachedBiomass`='#4F1F10',
   `RugOBSS_dryBeach`="#ffd92f",
-  `RugOBSS_wetBeach`="#70543e",
+  `RugOBSS_wetBeach`="#CCB54E",
   `RugOBSS_waveFoam`="grey80",
-  `RugOBSS_emergedRocks`="#AB8B2D",
-  `RugOBSS_submergedRocks`="#545454",
-  `RugOBSS_water`="#008B8B",
-  `RugOBSS_ODW`="#001959",
+  `RugOBSS_emergedRocks`="#BFA288",
+  `RugOBSS_submergedRocks`="#6D5C4F",
+  `RugOBSS_water`="#A8DEFF",
+  `RugOBSS_ODW`="#08588B",
   `RugOBSS_Green`="#9fcb41",
-  `RugOBSS_beachedPosidonia`='#4C613E'
+  `RugOBSS_beachedPosidonia`='#385110'
 
 )
 
