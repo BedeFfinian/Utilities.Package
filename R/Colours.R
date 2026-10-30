@@ -475,6 +475,19 @@ Bede_palettes <- list(
                                  "RugOBSS_Green",
                                  "RugOBSS_beachedPosidonia"),
 
+  `RugOBSS_Training_GreenAndPosidonia_Wet` = Bede_cols("RugOBSS_floatingBiomass",
+                                                   "RugOBSS_waveFoam",
+                                                   "RugOBSS_submergedRocks",
+                                                   "RugOBSS_water",
+                                                   "RugOBSS_ODW"),
+
+  `RugOBSS_Training_GreenAndPosidonia_Dry` = Bede_cols("RugOBSS_beachedBiomass",
+                                                   "RugOBSS_dryBeach",
+                                                   "RugOBSS_wetBeach",
+                                                   "RugOBSS_emergedRocks",
+                                                   "RugOBSS_Green",
+                                                   "RugOBSS_beachedPosidonia"),
+
   `RugOBSS_JustPosRug` = Bede_cols("RugOBSS_beachedBiomass",
                                    "RugOBSS_beachedPosidonia")
 
