@@ -9,7 +9,7 @@
 
 theme_Mareta <- function(...){
 
-  ggplot2::theme_classic()+
+ ggplot2::theme_classic()+
     ggplot2::theme(plot.title.position = "plot",
                    axis.line = ggplot2::element_line(colour = "black"),
                    rect = ggplot2::element_blank(),
@@ -20,12 +20,13 @@ theme_Mareta <- function(...){
                    panel.ontop = TRUE,
                    panel.grid.minor = ggplot2::element_blank(),
                    plot.background=ggplot2::element_rect(fill=NA),
-                   axis.title = ggplot2::element_text(colour='black',family='poppins'),
-                   axis.text.y = ggplot2::element_text(colour='black',family='poppins'),
-                   axis.text.x = ggplot2::element_text(colour='black',family='poppins'),
+                   axis.title = ggplot2::element_text(colour='black',family='poppins',size=12),
+                   axis.text.y = ggplot2::element_text(colour='black',family='poppins',size=11),
+                   axis.text.x = ggplot2::element_text(colour='black',family='poppins',size=11),
                    text = ggplot2::element_text(colour='black',family='poppins'),
                    panel.border = ggplot2::element_rect(colour='black'),
                    axis.ticks = ggplot2::element_line(colour='black'),
+                   strip.text = ggplot2::element_text(colour='black',family='poppins',face="bold",size=12),
                    ...)
 }
 
@@ -48,11 +49,12 @@ theme_Mareta_Dark <- function(...){
                                                             linewidth=0.25),
                    plot.background=element_rect(fill='grey20'),
                    panel.grid.minor = ggplot2::element_blank(),
-                   axis.title = ggplot2::element_text(colour='grey50',family='poppins'),
-                   axis.text.y = ggplot2::element_text(colour='grey50',family='poppins'),
-                   axis.text.x = ggplot2::element_text(colour='grey50',family='poppins'),
+                   axis.title = ggplot2::element_text(colour='grey50',family='poppins',size=12),
+                   axis.text.y = ggplot2::element_text(colour='grey50',family='poppins',size=11),
+                   axis.text.x = ggplot2::element_text(colour='grey50',family='poppins',size=11),
                    text = ggplot2::element_text(colour='grey50',family='poppins'),
                    panel.border = ggplot2::element_rect(colour='grey50'),
                    axis.ticks = ggplot2::element_line(colour='grey50'),
+                   strip.text = ggplot2::element_text(colour='grey50',family='poppins',face="bold",size=12),
                    ...)
 }

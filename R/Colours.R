@@ -174,14 +174,16 @@ Bede_colours <- c(
   `Elise_Grey`="grey80",
   `Elise_Violet`="#6a3d9a",
   `RugOBSS_floatingBiomass`="#e4494f",
-  `RugOBSS_beachedBiomass`="#b3002d",
+  `RugOBSS_beachedBiomass`='#4D3A1B',
   `RugOBSS_dryBeach`="#ffd92f",
   `RugOBSS_wetBeach`="#70543e",
   `RugOBSS_waveFoam`="grey80",
   `RugOBSS_emergedRocks`="#AB8B2D",
   `RugOBSS_submergedRocks`="#545454",
   `RugOBSS_water`="#008B8B",
-  `RugOBSS_ODW`="#386cb0"
+  `RugOBSS_ODW`="#001959",
+  `RugOBSS_Green`="#9fcb41",
+  `RugOBSS_beachedPosidonia`='#4C613E'
 
 )
 
@@ -459,7 +461,22 @@ Bede_palettes <- list(
                                  "RugOBSS_emergedRocks",
                                  "RugOBSS_submergedRocks",
                                  "RugOBSS_water",
-                                 "RugOBSS_ODW")
+                                 "RugOBSS_ODW"),
+
+  `RugOBSS_Training_GreenAndPosidonia` = Bede_cols("RugOBSS_floatingBiomass",
+                                 "RugOBSS_beachedBiomass",
+                                 "RugOBSS_dryBeach",
+                                 "RugOBSS_wetBeach",
+                                 "RugOBSS_waveFoam",
+                                 "RugOBSS_emergedRocks",
+                                 "RugOBSS_submergedRocks",
+                                 "RugOBSS_water",
+                                 "RugOBSS_ODW",
+                                 "RugOBSS_Green",
+                                 "RugOBSS_beachedPosidonia"),
+
+  `RugOBSS_JustPosRug` = Bede_cols("RugOBSS_beachedBiomass",
+                                   "RugOBSS_beachedPosidonia")
 
 
   )
