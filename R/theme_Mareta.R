@@ -26,8 +26,8 @@ theme_Mareta <- function(...){
                    text = ggplot2::element_text(colour='black',family='poppins',size=15),
                    panel.border = ggplot2::element_rect(colour='black'),
                    axis.ticks = ggplot2::element_line(colour='black'),
-                   strip.text = ggplot2::element_text(colour='black',family='poppins',face="bold",size=12),
-                   ...)
+                   strip.text = ggplot2::element_text(colour='black',family='poppins',face="bold",size=12))+
+    ggplot2::theme(...)
 }
 
 #' This function adds a custom theme to ggplots
@@ -55,6 +55,6 @@ theme_Mareta_Dark <- function(...){
                    text = ggplot2::element_text(colour='grey50',family='poppins',size=15),
                    panel.border = ggplot2::element_rect(colour='grey50'),
                    axis.ticks = ggplot2::element_line(colour='grey50'),
-                   strip.text = ggplot2::element_text(colour='grey50',family='poppins',face="bold",size=12),
-                   ...)
+                   strip.text = ggplot2::element_text(colour='grey50',family='poppins',face="bold",size=12))+
+    ggplot2::theme(...)
 }

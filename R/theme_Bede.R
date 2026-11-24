@@ -28,8 +28,8 @@ theme_Bede <- function(...){
                                                        colour = "black"),
                    axis.text.y = ggplot2::element_text(colour = "black",
                                                        size = 10.5),
-                   strip.text = ggplot2::element_text(colour='black',face="bold",size=12),
-                   ...)
+                   strip.text = ggplot2::element_text(colour='black',face="bold",size=12))+
+    ggplot2::theme(...)
 }
 
 #' This function adds a custom theme to ggplots
@@ -57,8 +57,8 @@ theme_Bede_Dark <- function(...){
                    text = ggplot2::element_text(colour='grey50',family='poppins'),
                    panel.border = ggplot2::element_rect(colour='grey50', fill=NA, linewidth=1),
                    axis.ticks = ggplot2::element_line(colour='grey50'),
-                   strip.text = ggplot2::element_text(colour='black',face="bold",size=12),
-                   ...)
+                   strip.text = ggplot2::element_text(colour='black',face="bold",size=12))+
+    ggplot2::theme(...)
 }
 
 #' This function adds a custom theme to ggplots
@@ -85,8 +85,8 @@ theme_Bede_MDS <- function(...){
                    axis.title.y=element_blank(),
                    axis.text.y=element_blank(),
                    axis.ticks.y=element_blank(),
-                   strip.text = ggplot2::element_text(colour='black',face="bold",size=12),
-                   ...)
+                   strip.text = ggplot2::element_text(colour='black',face="bold",size=12))+
+    ggplot2::theme(...)
 }
 
 #' This function adds a custom theme to ggplots
@@ -115,7 +115,6 @@ theme_Bede_Map <- function(...){
     axis.title = ggplot2::element_text(colour = "black",
                                        size = 12),
     strip.background = element_rect(fill = "white",
-                                    colour = "black", linewidth = rel(2)),
-    ...
-  )
+                                    colour = "black", linewidth = rel(2)))+
+    ggplot2::theme(...)
 }
